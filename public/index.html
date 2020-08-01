@@ -1,17 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="de">
+
+<head>
+    <!-- Made by Robin Lindner (https://deeprobin.de) -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
+    <meta name="description" content="Die offizielle Homepage von Robin Lindner." />
+    <meta name="keywords" content="development, robin lindner, software engineering" />
+    <title>DeepRobin.DE - Robin Lindner</title>
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="DeepRobin.DE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:description" content="Die offizielle Homepage von Robin Lindner." />
+    <meta property="og:site_name" content="DeepRobin.DE" />
+    <meta property="og:url" content="https://deeprobin.de/" />
+    <meta property="og:image" content="https://deeprobin.de/img/wallpaper1280.jpg" />
+    <meta property="og:image:secure_url" content="https://deeprobin.de/img/wallpaper1280.jpg" />
+    <meta property="og:image:alt" content="Der OpenGraph Banner von Robin Lindner." />
+    <script type="application/ld+json">
+        {
+            "@context": "https:\/\/schema.org",
+            "@type": "Article",
+            "name": "Robin Lindner",
+            "url": "https:\/\/deeprobin.de\/",
+            "sameAs": "https:\/\/deeprobin.de\/",
+            "mainEntity": "https:\/\/deeprobin.de\/",
+            "author": {
+                "@type": "Person",
+                "name": "Robin Lindner"
+            },
+            "publisher": {
+                "@type": "Person",
+                "name": "Robin Lindner",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/deeprobin.de\/img\/avatar.jpg"
+                }
+
+            },
+            "datePublished": "2020-07-31T15:39:02Z",
+            "image": "https:\/\/deeprobin.de\/img\/avatar.jpg",
+            "headline": "Softwareentwickler"
+        }
+    </script>
+
+</head>
+
+<body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>Hey, meine Website kann Dir nur angezeigt werden, wenn Du dein JavaScript aktivierst.</strong>
+      <ul>
+        <li><a href="/legacy-legal.html">Impressum</a></li>
+        <li><a href="/legacy-privacy-policy.html">Datenschutzerklärung</a></li>
+      </ul>
     </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+</body>
+
 </html>
