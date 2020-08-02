@@ -3,7 +3,7 @@
     <div class="container">
       <img class="avatar" src="@/assets/avatar.jpg" alt="Avatar: Robin Lindner"/>
       <div class="name">Robin Lindner</div>
-      <div class="subtitle">Software-Engineer</div>
+      <div class="subtitle">Software-Developer</div>
 
       <div class="location">
         <font-awesome-icon :icon="['fas', 'map-marker-alt']" />
@@ -100,9 +100,13 @@ export default {
   position: absolute;
 
   .container {
-    width: 20vw;
+    width: 384px;
     @media (max-width: 768px) {
       width: 90vw;
+    }
+
+    @media (max-height: 500px) {
+      max-height: 250px;
     }
 
     padding-top: 24px;
@@ -121,6 +125,10 @@ export default {
       -khtml-user-drag: none;
       -moz-user-drag: none;
       -o-user-drag: none;
+
+      @media (max-height: 500px) {
+        height: 75px;
+      }
     }
 
     .name {
@@ -164,6 +172,10 @@ export default {
         &:hover {
           color: #2c3e50;
           border-color: #2c3e50;
+        }
+
+        svg {
+          width: 16px;
         }
       }
     }
