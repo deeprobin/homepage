@@ -57,18 +57,6 @@ body {
   height: 100%;
 }
 
-#particles-js {
-  left: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: 5;
-}
-
 #view {
   z-index: 6;
 }
@@ -77,16 +65,7 @@ body {
   padding: 30px;
   z-index: 10;
   position: relative;
-  a {
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-
-    &.router-link-exact-active {
-      color: $link-active;
-      text-shadow: 0 0 5px white;
-    }
-  }
+  font-weight: 700;
 }
 
 #footer {
@@ -97,7 +76,9 @@ body {
   padding-bottom: 30px;
   margin: auto;
   bottom: 0;
+}
 
+#nav, #footer {
   a {
     color: white;
 
@@ -109,6 +90,18 @@ body {
 
 ::-moz-selection, ::selection {
   background: #9b59b6;
+}
+
+#particles-js {
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 5;
 }
 
 </style>

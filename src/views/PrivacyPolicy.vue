@@ -163,7 +163,7 @@ export default {
     padding: 12px;
     text-align: left;
     width: 90vw;
-    max-height: 80%;
+    max-height: 75vh;
     background-color: rgba(236, 240, 241, 0.8);
     color: black;
     border-radius: 2px;
