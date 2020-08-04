@@ -1,7 +1,7 @@
 <template>
   <div class="privacy-policy">
     <div class="container">
-      <h1>Datenschutzerklärung</h1>
+      <h1><font-awesome-icon class="icon" :icon="['fas', 'balance-scale']" /> Datenschutzerklärung</h1>
       <h2>1. Datenschutz auf einen Blick</h2>
       <h3>Allgemeine Hinweise</h3>
       <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
@@ -151,22 +151,31 @@ export default {
 
 <style lang="scss" scoped>
 .privacy-policy {
+  // positioning
   left: 0;
   top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   width: 100%;
+
+  // appearance
+  display: flex;
   position: absolute;
+
+  // alignment
+  align-items: center;
+  justify-content: center;
+
   .container {
-    padding: 12px;
     text-align: left;
     width: 90vw;
     max-height: 75vh;
+
+    padding: 12px;
+    border-radius: 2px;
+
     background-color: rgba(236, 240, 241, 0.8);
     color: black;
-    border-radius: 2px;
+
     overflow: auto;
   }
 }
