@@ -1,5 +1,7 @@
+//// eslint-disable-next-line @typescript-eslint/no-var-requires
+//const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 module.exports = {
     pwa: {
@@ -7,7 +9,8 @@ module.exports = {
     },
     configureWebpack: {
         plugins: [
-            new UglifyJsPlugin()
+            //new UglifyJsPlugin(),
+            new MinifyPlugin()
         ]
     }
 }

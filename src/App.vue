@@ -9,7 +9,7 @@
       <router-link to="/privacy-policy">Datenschutzerklärung</router-link>
     </div>
     <vue-particles
-        id="particles-js"
+        class="particles"
         color="#dedede"
         :particleOpacity="0.7"
         :particlesNumber="80"
@@ -34,18 +34,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap');
 
 $link-active: #3498db;
+$particles-z-index: 5;
+$view-z-index: 6;
+$nav-z-index: 10;
 
-html {
+html, body {
   height: 100%;
   width: 100%;
+  margin: 0;
 }
 
 body {
   background: url('./assets/wallpaper1920.jpg');
   background-size: cover;
   background-position: center;
-  height: 100%;
-  margin: 0;
 }
 
 #app {
@@ -58,18 +60,18 @@ body {
 }
 
 #view {
-  z-index: 6;
+  z-index: $view-z-index;
 }
 
 #nav {
   padding: 30px;
-  z-index: 10;
+  z-index: $nav-z-index;
   position: relative;
   font-weight: 700;
 }
 
 #footer {
-  z-index: 10;
+  z-index: $nav-z-index;
   position: fixed;
   width: 100%;
   padding-top: 30px;
@@ -88,20 +90,22 @@ body {
   }
 }
 
-::-moz-selection, ::selection {
-  background: #9b59b6;
-}
-
-#particles-js {
+.particles {
   left: 0;
   top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   width: 100%;
+
+  display: flex;
   position: absolute;
-  z-index: 5;
+  z-index: $particles-z-index;
+  
+  align-items: center;
+  justify-content: center;
+}
+
+::-moz-selection, ::selection {
+  background: #9b59b6;
 }
 
 </style>

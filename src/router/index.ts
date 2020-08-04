@@ -19,7 +19,7 @@ Vue.use(VueRouter)
     path: '/privacy-policy',
     name: 'PrivacyPolicy',
     component: () => import(/* webpackChunkName: "about" */ '../views/PrivacyPolicy.vue')
-  }
+  },
 ]
 
 const router = new VueRouter({

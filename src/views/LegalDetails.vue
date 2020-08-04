@@ -1,9 +1,9 @@
 <template>
   <div class="legal-details">
     <div class="container">
-      <h1>Impressum</h1>
+      <h1><font-awesome-icon class="icon" :icon="['fas', 'balance-scale']" /> Impressum</h1>
 
-      <h2>Angaben gemäß <a href="https://www.gesetze-im-internet.de/tmg/__5.html">§ 5 TMG</a></h2>
+      <h2>Angaben gemäß <a href="http://www.landesrecht-bw.de/jportal/portal/t/d9c/page/bsbawueprod.psml?pid=Dokumentanzeige&showdoccase=1&js_peid=Trefferliste&fromdoctodoc=yes&doc.id=jlr-RdFunkStVtrBWV1P55#focuspoint">§ 55 Abs. 1 RStV</a></h2>
       <p>
         Robin Lindner
         <br />Holzbronn 12
@@ -20,7 +20,7 @@
       <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
       
       <h3>Haftung für Links</h3>
-      <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewahr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
+      <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
       <p>Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
       
       <h3>Urheberrecht</h3>
@@ -36,22 +36,31 @@ export default {};
 
 <style lang="scss" scoped>
 .legal-details {
+  // positioning
   left: 0;
   top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   width: 100%;
+
+  // appearance
+  display: flex;
   position: absolute;
+
+  // alignment
+  align-items: center;
+  justify-content: center;
+
   .container {
-    padding: 12px;
     text-align: left;
     width: 90vw;
     max-height: 75vh;
+
+    padding: 12px;
+    border-radius: 2px;
+
     background-color: rgba(236, 240, 241, 0.8);
     color: black;
-    border-radius: 2px;
+
     overflow: auto;
   }
 }
