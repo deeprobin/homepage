@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-      <img class="avatar" src="@/assets/avatar.jpg" alt="Avatar: Robin Lindner" />
+      <img class="avatar" src="@/assets/avatar.webp" alt="Avatar: Robin Lindner" />
       <h1>Robin Lindner</h1>
       <div class="subtitle">Software-Developer</div>
 
@@ -9,13 +9,10 @@
         <font-awesome-icon class="icon" :icon="['fas', 'map-marker-alt']" />
         <span>Bad Mergentheim, Deutschland</span>
       </div>
-      <!-- 
-      <~~! Uncomment, if I have the permission of Würth Industrie Service GmbH & Co. KG to publish this information here ~~>
       <div class="property">
         <font-awesome-icon :icon="['far', 'building']" />
         <span>Würth Industrie Service GmbH &amp; Co. KG</span>
       </div>
-      -->
       <div class="property">
         <font-awesome-icon class="icon" :icon="['fas', 'envelope']" />
         <span>robin@deeprobin.de</span>

@@ -45,7 +45,7 @@ html, body {
 }
 
 body {
-  background: url('./assets/wallpaper1920.jpg');
+  background: url('./assets/wallpaper1920.webp');
   background-size: cover;
   background-position: center;
 }
