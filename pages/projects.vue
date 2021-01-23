@@ -2,6 +2,7 @@
   <div class="projects">
     <div class="container">
       <h1>Projekte</h1>
+
       <h2>Allgemeine Projekte</h2>
       <div class="project">
         <img src="~/assets/unknown.png" />
@@ -24,10 +25,31 @@
             zum Pentesting geschrieben.
           </div>
           <div class="project-link-section">
-            <a href="https://github.com/deeprobin/bruteforce-rs">GitHub</a>
+            <a href="https://github.com/deeprobin/bruteforce-rs" target="_blank"
+              >GitHub</a
+            >
           </div>
         </div>
       </div>
+
+      <h2>Internetseiten</h2>
+      <div class="project">
+        <img src="~/assets/chaosolymp.png" />
+        <div>
+          <p class="project-name">ChaosOlymp.DE</p>
+          <div class="project-description">
+            Eine Website eines Minecraft-Servernetzwerkes, welche Vue in
+            Verbindung mit Nuxt.js auf TypeScript-Basis als Frontend nutzt. Als
+            Backend wird eine Kombination aus Rust und Kotlin genutzt.
+          </div>
+          <div class="project-link-section">
+            <a href="https://chaosolymp.de/" target="_blank"
+              >In neuem Tab öffnen</a
+            >
+          </div>
+        </div>
+      </div>
+
       <h2>Minecraft-Projekte</h2>
       <div class="project">
         <img class="pixelated" src="~/assets/ruby_mod.png" />
@@ -60,9 +82,12 @@
           <div class="project-link-section">
             <a
               href="https://www.curseforge.com/minecraft/mc-mods/robins-amethyst-mod"
+              target="_blank"
               >CurseForge</a
             >&nbsp;
-            <a href="https://www.planetminecraft.com/mod/robins-amethyst-mod/"
+            <a
+              href="https://www.planetminecraft.com/mod/robins-amethyst-mod/"
+              target="_blank"
               >Planet Minecraft</a
             >
           </div>
@@ -79,9 +104,12 @@
           <div class="project-link-section">
             <a
               href="https://www.curseforge.com/minecraft/mc-mods/the-emerald-mod-fabric"
+              target="_blank"
               >CurseForge</a
             >&nbsp;
-            <a href="https://www.planetminecraft.com/mod/robins-emerald-mod/"
+            <a
+              href="https://www.planetminecraft.com/mod/robins-emerald-mod/"
+              target="_blank"
               >Planet Minecraft</a
             >
           </div>
@@ -96,7 +124,9 @@
             Chatnachrichten mit monetarisierten Links ersetzt.
           </div>
           <div class="project-link-section">
-            <a href="https://www.curseforge.com/minecraft/bukkit-plugins/earny"
+            <a
+              href="https://www.curseforge.com/minecraft/bukkit-plugins/earny"
+              target="_blank"
               >CurseForge</a
             >
           </div>
@@ -111,38 +141,62 @@ export default {
     title: 'DeepRobin.DE - Projekte',
     meta: [
       {
+        hid: 'title',
+        property: 'title',
+        content: 'DeepRobin.DE: Projekte',
+      },
+      {
+        hid: 'description',
+        property: 'description',
+        content: 'Auf dieser Seite befinden sich meine aktuellen Projekte.',
+      },
+      {
+        hid: 'robots',
+        name: 'robots',
+        content: 'index, follow',
+      },
+      {
+        hid: 'og:title',
         property: 'og:title',
         content: 'DeepRobin.DE: Projekte',
       },
       {
+        hid: 'og:type',
         property: 'og:type',
         content: 'website',
       },
       {
+        hid: 'og:locale',
         property: 'og:locale',
         content: 'de_DE',
       },
       {
+        hid: 'og:description',
         property: 'og:description',
         content: 'Auf dieser Seite befinden sich meine aktuellen Projekte.',
       },
       {
+        hid: 'og:site_name',
         property: 'og:site_name',
         content: 'DeepRobin.DE',
       },
       {
+        hid: 'og:url',
         property: 'og:url',
         content: 'https://deeprobin.de/projects/',
       },
       {
+        hid: 'og:image',
         property: 'og:image',
         content: 'https://deeprobin.de/img/wallpaper1280.jpg',
       },
       {
+        hid: 'og:image:secure_url',
         property: 'og:image:secure_url',
         content: 'https://deeprobin.de/img/wallpaper1280.jpg',
       },
       {
+        hid: 'og:image:alt',
         property: 'og:image:alt',
         content: 'Der OpenGraph Banner von Robin Lindner.',
       },

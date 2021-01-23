@@ -145,38 +145,62 @@ export default {
     title: "DeepRobin.DE",
     meta: [
       {
+        hid: 'title',
+        property: "title",
+        content: "DeepRobin.DE: Datenschutzerklärung"
+      },
+      {
+        hid: 'description',
+        property: "description",
+        content: "Auf dieser Seite befinden sich alle Informationen, welche dem Schutze Ihrer Daten dienen."
+      },
+      {
+        hid: 'robots',
+        name: 'robots',
+        content: 'index, follow'
+      },
+      {
+        hid: 'og:title',
         property: "og:title",
         content: "DeepRobin.DE: Datenschutzerklärung"
       },
       {
+        hid: 'og:type',
         property: "og:type",
         content: "website"
       },
       {
+        hid: 'og:locale',
         property: "og:locale",
         content: "de_DE"
       },
       {
+        hid: 'og:description',
         property: "og:description",
         content: "Auf dieser Seite befinden sich alle Informationen, welche dem Schutze Ihrer Daten dienen."
       },
       {
+        hid: 'og:site_name',
         property: "og:site_name",
         content: "DeepRobin.DE"
       },
       {
+        hid: 'og:url',
         property: "og:url",
         content: "https://deeprobin.de/legal-details/"
       },
       {
+        hid: 'og:image',
         property: "og:image",
         content: "https://deeprobin.de/img/wallpaper1280.jpg"
       },
       {
+        hid: 'og:image:secure_url',
         property: "og:image:secure_url",
         content: "https://deeprobin.de/img/wallpaper1280.jpg"
       },
       {
+        hid: 'og:image:alt',
         property: "og:image:alt",
         content: "Der OpenGraph Banner von Robin Lindner."
       }
