@@ -1,5 +1,6 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
+  target: 'static',
   head: {
     title: 'homepage',
     meta: [
@@ -15,7 +16,12 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '~/plugins/jsonld'
+    '~/plugins/jsonld',
+    {
+      ssr: false,
+      mode: 'client',
+      src: '~/plugins/mail.client.js'
+    }
   ], 
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

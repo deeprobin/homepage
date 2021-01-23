@@ -19,6 +19,20 @@
 </div>
 </template>
 
+<script>
+export default {
+  head: {
+    meta: [
+      {
+        hid: 'robots',
+        name: 'robots',
+        content: 'noindex, nofollow'
+      },
+    ]
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 *,
 *::before,

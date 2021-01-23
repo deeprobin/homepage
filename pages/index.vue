@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <div class="container">
-      <img class="avatar" src="@/assets/avatar.webp" alt="Avatar: Robin Lindner" />
+      <img
+        class="avatar"
+        src="@/assets/avatar.webp"
+        alt="Avatar: Robin Lindner"
+      />
       <h1>Robin Lindner</h1>
       <div class="subtitle">Software-Developer</div>
 
@@ -15,11 +19,17 @@
       </div>
       <div class="property">
         <font-awesome-icon class="icon" :icon="['fas', 'envelope']" />
-        <span>robin@deeprobin.de</span>
+        <!-- <span>robin@deeprobin.de</span> -->
+        <mail/>
       </div>
 
       <div class="social-media">
-        <a v-for="item of this.getSocialMedia()" :key="item.url" :href="item.url" target="_blank">
+        <a
+          v-for="item of this.getSocialMedia()"
+          :key="item.url"
+          :href="item.url"
+          target="_blank"
+        >
           <font-awesome-icon :icon="['fab', item.icon]" />
         </a>
       </div>
@@ -29,109 +39,132 @@
 
 <script>
 // @ is an alias to /src
-
 export default {
-  name: "Home",
+  name: 'Home',
   head: {
-    title: "DeepRobin.DE",
+    title: 'DeepRobin.DE',
     meta: [
       {
-        property: "og:title",
-        content: "DeepRobin.DE: Robin Lindner - Software-Entwickler"
+        hid: 'title',
+        property: 'title',
+        content: 'DeepRobin.DE: Robin Lindner - Software-Entwickler',
       },
       {
-        property: "og:type",
-        content: "website"
+        hid: 'description',
+        property: 'description',
+        content:
+          'Die offizielle Homepage von Robin Lindner - Rust, Vue, JVM & .NET Entwickler',
       },
       {
-        property: "og:locale",
-        content: "de_DE"
+        hid: 'robots',
+        name: 'robots',
+        content: 'index, follow',
       },
       {
-        property: "og:description",
-        content: "Die offizielle Homepage von Robin Lindner - Rust, Vue, JVM & .NET Entwickler"
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'DeepRobin.DE: Robin Lindner - Software-Entwickler',
       },
       {
-        property: "og:site_name",
-        content: "DeepRobin.DE"
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'website',
       },
       {
-        property: "og:url",
-        content: "https://deeprobin.de/"
+        hid: 'og:locale',
+        property: 'og:locale',
+        content: 'de_DE',
       },
       {
-        property: "og:image",
-        content: "https://deeprobin.de/img/wallpaper1280.jpg"
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'Die offizielle Homepage von Robin Lindner - Rust, Vue, JVM & .NET Entwickler',
       },
       {
-        property: "og:image:secure_url",
-        content: "https://deeprobin.de/img/wallpaper1280.jpg"
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'DeepRobin.DE',
       },
       {
-        property: "og:image:alt",
-        content: "Der OpenGraph Banner von Robin Lindner."
-      }
-    ]
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://deeprobin.de/',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://deeprobin.de/img/wallpaper1280.jpg',
+      },
+      {
+        hid: 'og:image:secure_url',
+        property: 'og:image:secure_url',
+        content: 'https://deeprobin.de/img/wallpaper1280.jpg',
+      },
+      {
+        hid: 'og:image:alt',
+        property: 'og:image:alt',
+        content: 'Der OpenGraph Banner von Robin Lindner.',
+      },
+    ],
   },
-  data: {
-    jsonld() {
-      return {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "name": "Robin Lindner",
-        "url": "https://deeprobin.de/",
-        "sameAs": "https://deeprobin.de/",
-        "mainEntity": "https://deeprobin.de/",
-        "author": {
-          "@type": "Person",
-          "name": "Robin Lindner"
+
+  jsonld() {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      name: 'Robin Lindner',
+      url: 'https://deeprobin.de/',
+      sameAs: 'https://deeprobin.de/',
+      mainEntity: 'https://deeprobin.de/',
+      author: {
+        '@type': 'Person',
+        name: 'Robin Lindner',
+      },
+      publisher: {
+        '@type': 'Person',
+        name: 'Robin Lindner',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://deeprobin.de/img/avatar.jpg',
         },
-        "publisher": {
-          "@type": "Person",
-          "name": "Robin Lindner",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://deeprobin.de/img/avatar.jpg"
-          }
-        },
-        "datePublished": "2020-07-31T15:39:02Z",
-        "image": "https://deeprobin.de/img/avatar.jpg",
-        "headline": "Softwareentwickler"
-      }
+      },
+      datePublished: '2020-07-31T15:39:02Z',
+      image: 'https://deeprobin.de/img/avatar.jpg',
+      headline: 'Softwareentwickler',
     }
   },
-  components: {},
   methods: {
     getSocialMedia() {
       return [
         {
-          icon: "linkedin",
-          url: "https://www.linkedin.com/in/deeprobin/"
+          icon: 'linkedin',
+          url: 'https://www.linkedin.com/in/deeprobin/',
         },
         {
-          icon: "github",
-          url: "https://github.com/deeprobin"
+          icon: 'github',
+          url: 'https://github.com/deeprobin',
         },
         {
-          icon: "gitlab",
-          url: "https://gitlab.com/deeprobin"
+          icon: 'gitlab',
+          url: 'https://gitlab.com/deeprobin',
         },
         {
-          icon: "stack-overflow",
-          url: "https://stackoverflow.com/users/7600021/robin-lindner"
+          icon: 'stack-overflow',
+          url: 'https://stackoverflow.com/users/7600021/robin-lindner',
         },
         {
-          icon: "codepen",
-          url: "https://codepen.io/DeepRobin/"
+          icon: 'codepen',
+          url: 'https://codepen.io/DeepRobin/',
         },
         {
-          icon: "twitter",
-          url: "https://twitter.com/_DeepRobin/"
-        }
-      ];
-    }
-  }
-};
+          icon: 'twitter',
+          url: 'https://twitter.com/_DeepRobin/',
+        },
+      ]
+    },
+  },
+}
 </script>
 <!-- Image by <a href="https://pixabay.com/users/MustangJoe-2162920/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1236581">MustangJoe</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1236581">Pixabay</a> -->
 <style lang="scss" scoped>
@@ -238,8 +271,6 @@ $subtitle-size: 22px;
         }
       }
     }
-
-    
   }
 }
 </style>
