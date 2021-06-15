@@ -21,7 +21,7 @@
     "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.14.0",
-    "nuxt": "^2.15.6",
+    "nuxt": "^2.15.7",
     "nuxt-jsonld": "^1.5.1",
     "sass": "^1.34.1",
     "sass-loader": "^12.1.0",
