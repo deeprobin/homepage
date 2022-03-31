@@ -23,7 +23,7 @@
     "core-js": "^3.21.1",
     "nuxt": "^2.15.8",
     "nuxt-jsonld": "^1.5.3",
-    "sass": "^1.49.9",
+    "sass": "^1.49.10",
     "sass-loader": "^12.6.0",
     "vue-class-component": "^7.2.6",
     "vue-particles": "^1.0.9",
