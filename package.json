@@ -22,7 +22,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.21.1",
     "nuxt": "^2.15.8",
-    "nuxt-jsonld": "^1.5.3",
+    "nuxt-jsonld": "^2.0.2",
     "sass": "^1.50.0",
     "sass-loader": "^12.6.0",
     "vue-class-component": "^7.2.6",
