@@ -9443,11 +9443,12 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
-nuxt-jsonld@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/nuxt-jsonld/-/nuxt-jsonld-1.5.3.tgz#53e9f468f145b47a139eb84a30911cff713846f7"
-  integrity sha512-FC+mEfjyMdOR1lfjSQvmhtcDUOQiUha/+Y+2MaWGd8A8OQVZJaJ+d8ZyHU+p/XdLFFTjwQG0byKqa+jVvwVMTA==
+nuxt-jsonld@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/nuxt-jsonld/-/nuxt-jsonld-2.0.3.tgz#89a3d1f5c0966bca8f2b706788b1400bf07da5a2"
+  integrity sha512-9Vl2anCMeXH/cLJFZSVeI3+SyqnqxG1RjutvvQBCoKWUtAjTpplgi19HJQ7HrdijProDqtIgysKlCdsZFLaSVA==
   dependencies:
+    pathe "^0.2.0"
     schema-dts "^1.0.0"
 
 nuxt@^2.15.8:
@@ -9904,6 +9905,11 @@ path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+
+pathe@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/pathe/-/pathe-0.2.0.tgz#30fd7bbe0a0d91f0e60bae621f5d19e9e225c339"
+  integrity sha512-sTitTPYnn23esFR3RlqYBWn4c45WGeLcsKzQiUpXJAyfcWkolvlYpV8FLo7JishK946oQwMFUCHXQ9AjGPKExw==
 
 pbkdf2@^3.0.3:
   version "3.1.1"
