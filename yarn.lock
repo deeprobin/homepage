@@ -10303,12 +10303,12 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
-nuxt-jsonld@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/nuxt-jsonld/-/nuxt-jsonld-2.0.3.tgz#89a3d1f5c0966bca8f2b706788b1400bf07da5a2"
-  integrity sha512-9Vl2anCMeXH/cLJFZSVeI3+SyqnqxG1RjutvvQBCoKWUtAjTpplgi19HJQ7HrdijProDqtIgysKlCdsZFLaSVA==
+nuxt-jsonld@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/nuxt-jsonld/-/nuxt-jsonld-2.0.4.tgz#f6d5c1b8b770401e2e22bd521113c353d643e52a"
+  integrity sha512-xTO5x4RzwLepcsQ7OapqBgLsCgm+kk3Jny0B3rGLeId4F5IecRdyKfgUiVtrmua7iGlugRiZmfNkfz4j4qy4ow==
   dependencies:
-    pathe "^0.2.0"
+    pathe "^0.3.0"
     schema-dts "^1.0.0"
 
 nuxt@^2.15.8:
