@@ -21,5 +21,5 @@ jobs:
       with:
         push: true
         tags: |
-            ${{ env.REGISTRY }}/${{ github.repository_owner }}/homepage:$(date +%s)
-            ${{ env.REGISTRY }}/${{ github.repository_owner }}/homepage:latest
+            ${{ github.repository_owner }}/homepage:$(date +%s)
+            ${{ github.repository_owner }}/homepage:latest
