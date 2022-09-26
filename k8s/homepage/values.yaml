@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/${{ github.repository_owner }}/homepage
-  pullPolicy: Never
+  repository: ghcr.io/deeprobin/homepage
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 

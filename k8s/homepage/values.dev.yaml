@@ -1,3 +1,8 @@
+image:
+  repository: ghcr.io/deeprobin/homepage
+  pullPolicy: Always
+  tag: "dev"
+
 ingress:
   enabled: true
   className: ""
@@ -5,7 +10,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: deeprobin.de
+    - host: dev.deeprobin.de
       paths:
         - path: /
           pathType: ImplementationSpecific
