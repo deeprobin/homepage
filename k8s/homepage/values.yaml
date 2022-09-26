@@ -5,12 +5,13 @@
 replicaCount: 1
 
 image:
-  repository: homepage
+  repository: ghcr.io/${{ github.repository_owner }}/homepage
   pullPolicy: Never
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: github-container-registry
 nameOverride: ""
 fullnameOverride: ""
 
@@ -41,7 +42,7 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
