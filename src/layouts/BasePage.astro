@@ -1,0 +1,17 @@
+---
+import "../styles/carbon.scss";
+import BaseHead from '../components/BaseHead.astro';
+import BasePageComponent from '../components/BasePageComponent.svelte';
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title="DeepRobin.DE" description="DeepRobin.DE" />
+	</head>
+
+	<body>
+		<BasePageComponent client:load>
+			<slot/>
+		</BasePageComponent>
+	</body>
+</html>
