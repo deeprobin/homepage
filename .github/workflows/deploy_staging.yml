@@ -16,10 +16,12 @@ jobs:
       uses: docker/setup-qemu-action@v2
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
+    - id: date
+      run: echo "::set-output name=date::$(date +%s)"
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
         push: true
         tags: |
-            ${{ github.repository_owner }}/homepage:staging-$(date +%s)
+            ${{ github.repository_owner }}/homepage:staging-${{ steps.date.outputs.date }}
             ${{ github.repository_owner }}/homepage:staging
