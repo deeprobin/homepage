@@ -1,4 +1,4 @@
-name: Deploy
+name: deploy (production)
 
 on:
   push:
@@ -21,6 +21,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
+        context: .
         push: true
         tags: |
             ${{ github.repository_owner }}/homepage:${{ steps.date.outputs.date }}
