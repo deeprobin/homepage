@@ -20,4 +20,6 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: deeprobin/homepage:development,deeprobin/homepage:development-$(date +%s)
+        tags: |
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:dev-${{steps.get-tags.outputs.tags }}
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:dev
