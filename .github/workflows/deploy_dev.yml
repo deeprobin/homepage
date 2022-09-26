@@ -45,4 +45,4 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
       - name: Install Helm Chart
-        run: helm upgrade --install homepage ./k8s/charts/homepage --values ./k8s/charts/homepage/values.dev.yaml
+        run: helm upgrade --install homepage ./k8s/homepage --values ./k8s/homepage/values.dev.yaml
