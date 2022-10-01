@@ -2,15 +2,14 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
-import react from '@astrojs/react';
 import deno from "@astrojs/deno";
-
 import partytown from "@astrojs/partytown";
+import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://deeprobin.de',
-  integrations: [react(), svelte(), mdx(), sitemap(), partytown()],
+  integrations: [svelte(), mdx(), sitemap(), partytown(), prefetch()],
   output: "server",
   adapter: deno()
 });

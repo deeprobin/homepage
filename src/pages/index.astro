@@ -1,24 +1,56 @@
 ---
-import BasePage from "../layouts/BasePage.astro";
-import Avatar from "../components/Avatar.svelte";
 import Row from "carbon-components-svelte/src/Grid/Row.svelte";
 import Column from "carbon-components-svelte/src/Grid/Column.svelte";
+import Grid from "carbon-components-svelte/src/Grid/Grid.svelte";
+import ClickableTile from "carbon-components-svelte/src/Tile/ClickableTile.svelte";
+import { getLanguage, getLanguages } from "../localization";
+import type { Language } from "../localization/language";
+import MinimalPage from "../layouts/MinimalPage.astro";
+
+const LANGUAGES = await getLanguages();
+let language = await getLanguage(Astro.request);
+if(language !== undefined && language !== null) {
+    Astro.redirect("/" + language.identifier);
+}
+
+function* chunkArray<T>(arr: Array<T>, chunkSize: number): Generator<Array<T>> {
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    yield arr.slice(i, i + chunkSize);
+  }
+}
+
+const languageChunks: Array<Array<Language>> = [];
+for(let chunk of chunkArray(LANGUAGES, 2)) {
+    languageChunks.push(chunk);
+}
+
 ---
 
-<BasePage>
-  <Row>
-    <Column style="margin: auto;">
-      <h1>Robin Lindner</h1>
-      <h2>Software Engineer</h2>
-      <br />
-      <p>
-        Hey, I'm passionate about software development with a focus on
-        cloud-focused backend development. I am also interested in compiler
-        engineering and x86 assembly.
-      </p>
-    </Column>
-    <Column>
-	  <Avatar client:only/>
-    </Column>
-  </Row>
-</BasePage>
+<MinimalPage>
+    <Grid>
+        {LANGUAGES.map((language) => 
+            <>
+                <Row>
+                    <p style="text-align: center; width: 100%;">{language.getByKey("pleaseSelectYourLanguage")}</p>    
+                </Row>
+            </>
+        )}
+    <br/>
+        {languageChunks.map((chunk) => 
+            <>
+                <Row>
+                    {chunk.map((language) => 
+                        <>
+                            <Column>
+                                <ClickableTile href={"/" + language.identifier}>
+                                    <h4>{language.getByKey("englishName")}</h4>
+                                    <h5>{language.getByKey("translatedName")}</h5>
+                                </ClickableTile>
+                            </Column>
+                        </>
+                )}
+                </Row>
+            </>
+        )}
+    </Grid>
+</MinimalPage>

@@ -1,0 +1,40 @@
+---
+import BasePage from "../../../../layouts/BasePage.astro"
+import { getLanguageRespectingPath } from "../../../../localization";
+
+let language = await getLanguageRespectingPath(Astro.params);
+if(language == undefined) {
+	Astro.redirect("/");
+}
+
+const posts = (await Astro.glob("../../../../posts/announcements/**/*.{md,mdx}")).sort(
+	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+).filter(p => {
+	let lastSlashIdx = p.file.lastIndexOf('/');
+	let parentDir = p.file.substring(0, lastSlashIdx);
+
+	let slashBeforeLanguageIdx = parentDir.lastIndexOf('/');
+	let l = parentDir.substring(slashBeforeLanguageIdx + 1);
+
+	return l == language?.identifier;
+});
+---
+
+<BasePage>
+			<section>
+				<ul>
+					{posts.map((post) => (
+						<li>
+							<time datetime={post.frontmatter.pubDate}>
+								{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric',
+								})}
+							</time>
+							<a href={"/" + language!.identifier + "/blog/announcements/" + post.url.substring(post.url.lastIndexOf('/') + 1, post.url.lastIndexOf('.'))}>{post.frontmatter.title}</a>
+						</li>
+					))}
+				</ul>
+			</section>
+</BasePage>

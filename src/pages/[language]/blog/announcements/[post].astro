@@ -1,0 +1,32 @@
+---
+import type { AstroInstance } from "astro";
+import { getLanguageRespectingPath } from "../../../../localization";
+
+let language = await getLanguageRespectingPath(Astro.params);
+if(language == undefined) {
+	Astro.redirect("/");
+}
+
+let post: string = Astro.params["post"] as string;
+let posts: AstroInstance[] = await Astro.glob("../../../../posts/announcements/**/*.{md,mdx}");
+let matchingPosts = posts.filter(p => {
+	let lastSlashIdx = p.file.lastIndexOf('/');
+	let fileNameWithoutExtension = p.file.substring(lastSlashIdx + 1, p.file.lastIndexOf('.'));
+	let parentDir = p.file.substring(0, lastSlashIdx);
+
+	let slashBeforeLanguageIdx = parentDir.lastIndexOf('/');
+	let l = parentDir.substring(slashBeforeLanguageIdx + 1);
+
+	return l == language?.identifier && fileNameWithoutExtension?.toLowerCase() == post?.toLowerCase();
+});
+if(matchingPosts.length == 0) {
+	// TODO: 404
+	Astro.redirect("/404");
+}
+
+let thePost: AstroInstance = matchingPosts[0] as AstroInstance;
+const Content = thePost.default;
+
+--- 
+
+<Content />

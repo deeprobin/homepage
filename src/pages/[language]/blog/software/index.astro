@@ -1,8 +1,8 @@
 ---
-import BasePage from "../../../layouts/BasePage.astro"
+import BasePage from "../../../../layouts/BasePage.astro"
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob('./blog/finance/*.{md,mdx}')).sort(
+const posts = (await Astro.glob('./blog/software/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 ---
