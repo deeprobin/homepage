@@ -11,29 +11,56 @@
   import LogoGithub from "carbon-icons-svelte/lib/LogoGithub.svelte";
   import LogoLinkedin from "carbon-icons-svelte/lib/LogoLinkedin.svelte";
   import LogoTwitter from "carbon-icons-svelte/lib/LogoTwitter.svelte";
+  import type { Language } from "../localization/language";
+
+  export let language: Language;
 </script>
 
-<Header href="/" company="Robin Lindner" platformName="deeprobin.de">
+<Header
+  href="/{language.identifier}"
+  company="Robin Lindner"
+  platformName="deeprobin.de"
+>
   <svelte:fragment slot="skip-to-content">
     <SkipToContent />
   </svelte:fragment>
   <HeaderNav>
     <HeaderNavMenu text="Projects">
-      <HeaderNavItem href="/projects/featured" text="Featured" />
-      <HeaderNavItem href="/projects/side-projects" text="Side projects" />
+      <HeaderNavItem
+        href="/{language.identifier}/projects/featured"
+        text="Featured"
+      />
+      <HeaderNavItem
+        href="/{language.identifier}/projects/side-projects"
+        text="Side projects"
+      />
     </HeaderNavMenu>
-    <HeaderNavMenu href="/blog" text="Blog">
-      <HeaderNavItem href="/blog/announcements" text="Announcements" />
-      <HeaderNavItem href="/blog/software" text="Software" />
-      <HeaderNavItem href="/blog/finance" text="Finance" />
+    <HeaderNavMenu href="/{language.identifier}/blog" text="Blog">
+      <HeaderNavItem
+        href="/{language.identifier}/blog/announcements"
+        text="Announcements"
+      />
+      <HeaderNavItem
+        href="/{language.identifier}/blog/software"
+        text="Software"
+      />
+      <HeaderNavItem
+        href="/{language.identifier}/blog/finance"
+        text="Finance"
+      />
     </HeaderNavMenu>
-    <HeaderNavItem href="/services" text="Services" />
-    <HeaderNavItem href="/shop" text="Shop" />
-    <HeaderNavItem href="/contact" text="Contact" />
+    <HeaderNavItem href="/{language.identifier}/shop" text="Shop" />
+    <HeaderNavItem href="/{language.identifier}/contact" text="Contact" />
   </HeaderNav>
   <HeaderUtilities>
-    <HeaderNavItem href="/legal-details" text="Legal details" />
-    <HeaderNavItem href="/privacy-policy" text="Privacy policy" />
+    <HeaderNavItem
+      href="/{language.identifier}/legal-details"
+      text="Legal details"
+    />
+    <HeaderNavItem
+      href="/{language.identifier}/privacy-policy"
+      text="Privacy policy"
+    />
     <HeaderActionLink
       aria-label="Github"
       icon={LogoGithub}

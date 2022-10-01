@@ -1,0 +1,41 @@
+---
+import { getLanguageRespectingPath } from "../../localization";
+
+import BasePage from "../../layouts/BasePage.astro";
+import Avatar from "../../components/Avatar.svelte";
+import Row from "carbon-components-svelte/src/Grid/Row.svelte";
+import Column from "carbon-components-svelte/src/Grid/Column.svelte";
+import ButtonSet from "carbon-components-svelte/src/Button/ButtonSet.svelte";
+import Button from "carbon-components-svelte/src/Button/Button.svelte";
+
+let language = await getLanguageRespectingPath(Astro.params);
+if(language == undefined || language == null) {
+  Astro.redirect("/");
+}
+
+let services = language?.getByKey("services");
+---
+
+<BasePage>
+  <Row>
+    <Column style="margin: auto;">
+      <h1>Robin Lindner</h1>
+      <h2>Software Engineer</h2>
+      <br />
+      <p>
+        Hey, I'm passionate about software development with a focus on
+        cloud-focused backend development. I am also interested in compiler
+        engineering and x86 assembly.
+      </p>
+      <br/>
+      <ButtonSet>
+        <Button href="/services/">{services}</Button>
+        <Button href="/contact/">Custom offer</Button>
+        <Button href="/cv/">Curriculum Vitae</Button>
+      </ButtonSet>
+    </Column>
+    <Column>
+	  <Avatar client:only/>
+    </Column>
+  </Row>
+</BasePage>
