@@ -8,13 +8,13 @@ ingress:
   className: ""
   annotations: 
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: traefik
+    kubernetes.io/ingress.class: "traefik"
   hosts:
     - host: dev.deeprobin.de
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls: 
-    - secretName: deeprobin.de-tls
-      hosts:
-        - dev.deeprobin.de
+  - hosts:
+    - dev.deeprobin.de
+    secretName: deeprobin.de-tls

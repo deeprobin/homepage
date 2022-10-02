@@ -1,6 +1,7 @@
 ---
 import BasePage from "../../../layouts/BasePage.astro";
 import Link from "carbon-components-svelte/src/Link/Link.svelte";
+import { getLanguageRespectingPath } from "../../../localization";
 let language = await getLanguageRespectingPath(Astro.params);
 if (language == undefined) {
   return new Response(null, {
