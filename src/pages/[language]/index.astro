@@ -9,11 +9,12 @@ import ButtonSet from "carbon-components-svelte/src/Button/ButtonSet.svelte";
 import Button from "carbon-components-svelte/src/Button/Button.svelte";
 
 let language = await getLanguageRespectingPath(Astro.params);
-if(language == undefined || language == null) {
-  Astro.redirect("/");
+if (language == undefined) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
 }
-
-let services = language?.getByKey("services");
 ---
 
 <BasePage>
@@ -22,20 +23,16 @@ let services = language?.getByKey("services");
       <h1>Robin Lindner</h1>
       <h2>Software Engineer</h2>
       <br />
-      <p>
-        Hey, I'm passionate about software development with a focus on
-        cloud-focused backend development. I am also interested in compiler
-        engineering and x86 assembly.
-      </p>
-      <br/>
+      <p>{language.getByKey("index.description")}</p>
+      <br />
       <ButtonSet>
-        <Button href="/services/">{services}</Button>
-        <Button href="/contact/">Custom offer</Button>
-        <Button href="/cv/">Curriculum Vitae</Button>
+        <Button href="./services/">{language.getByKey("services")}</Button>
+        <Button href="./contact/">{language.getByKey("customOffer")}</Button>
+        <Button href="./cv/">{language.getByKey("curriculumVitae")}</Button>
       </ButtonSet>
     </Column>
     <Column>
-	  <Avatar client:only/>
+      <Avatar client:only />
     </Column>
   </Row>
 </BasePage>

@@ -7,50 +7,10 @@ import { getLanguage, getLanguages } from "../localization";
 import type { Language } from "../localization/language";
 import MinimalPage from "../layouts/MinimalPage.astro";
 
-const LANGUAGES = await getLanguages();
 let language = await getLanguage(Astro.request);
-if(language !== undefined && language !== null) {
-    Astro.redirect("/" + language.identifier);
+if (language == undefined) {
+  return Astro.redirect("/language");
+} else {
+  return Astro.redirect("/" + language.identifier);
 }
-
-function* chunkArray<T>(arr: Array<T>, chunkSize: number): Generator<Array<T>> {
-  for (let i = 0; i < arr.length; i += chunkSize) {
-    yield arr.slice(i, i + chunkSize);
-  }
-}
-
-const languageChunks: Array<Array<Language>> = [];
-for(let chunk of chunkArray(LANGUAGES, 2)) {
-    languageChunks.push(chunk);
-}
-
 ---
-
-<MinimalPage>
-    <Grid>
-        {LANGUAGES.map((language) => 
-            <>
-                <Row>
-                    <p style="text-align: center; width: 100%;">{language.getByKey("pleaseSelectYourLanguage")}</p>    
-                </Row>
-            </>
-        )}
-    <br/>
-        {languageChunks.map((chunk) => 
-            <>
-                <Row>
-                    {chunk.map((language) => 
-                        <>
-                            <Column>
-                                <ClickableTile href={"/" + language.identifier}>
-                                    <h4>{language.getByKey("englishName")}</h4>
-                                    <h5>{language.getByKey("translatedName")}</h5>
-                                </ClickableTile>
-                            </Column>
-                        </>
-                )}
-                </Row>
-            </>
-        )}
-    </Grid>
-</MinimalPage>

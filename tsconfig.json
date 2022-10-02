@@ -1,5 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "target": "esnext",
+  "compilerOptions": {
+    "target": "ESNext"
+  },
   "module": "esnext"
 }
