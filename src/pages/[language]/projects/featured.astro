@@ -4,79 +4,86 @@ import Row from "carbon-components-svelte/src/Grid/Row.svelte";
 import Column from "carbon-components-svelte/src/Grid/Column.svelte";
 import ClickableTile from "carbon-components-svelte/src/Tile/ClickableTile.svelte";
 import Tag from "carbon-components-svelte/src/Tag/Tag.svelte";
+
+let language = await getLanguageRespectingPath(Astro.params);
+if (language == undefined) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
 ---
 
 <BasePage>
-<div>
-  <h1>Featured projects</h1>
-  <br />
-  <div style="margin: auto;">
-    <Row>
-      <Column style="margin: 12px;">
-        <ClickableTile href="https://github.com/cliff-db">
-          <h2>Cliff</h2>
-          <Tag type="purple">Work in progress</Tag>
-          <br />
-          <p>Cliff is a highly distributable database management system.</p>
-          <br />
-          <div>
-            <Tag type="red">Rust</Tag>
-          </div>
-        </ClickableTile>
-      </Column>
-      <Column style="margin: 12px;">
-        <ClickableTile href="https://github.com/deeprobin/bruteforce-rs">
-          <h2>bruteforce-rs</h2>
-          <Tag type="teal">Maintained</Tag>
-          <br />
-          <p>A no-std rust bruteforce string-generation library</p>
-          <br />
-          <div>
-            <Tag type="red">Rust</Tag>
-          </div>
-        </ClickableTile>
-      </Column>
-    </Row>
-    <Row>
-      <Column style="margin: 12px;">
-        <ClickableTile href="https://github.com/deeprobin/uvm">
-          <h2>uvm</h2>
-          <Tag type="purple">Work in progress</Tag>
-          <br />
-          <p>
-            The universal virtual machine is a virtual machine focused on a fast
-            highly decentralized computing using a Just-in-time compiler, which
-            includes GPU-optimization, auto-vectorization, profile guided
-            optimization.
-          </p>
-          <br />
-          <div>
-            <Tag type="red">Rust</Tag>
-          </div>
-        </ClickableTile>
-      </Column>
-      <Column style="margin: 12px;">
-        <ClickableTile href="https://github.com/dotnet/runtime/">
-          <h2>The .NET Runtime</h2>
-          <div>
+  <div>
+    <h1>Featured projects</h1>
+    <br />
+    <div style="margin: auto;">
+      <Row>
+        <Column style="margin: 12px;">
+          <ClickableTile href="https://github.com/cliff-db">
+            <h2>Cliff</h2>
+            <Tag type="purple">Work in progress</Tag>
+            <br />
+            <p>Cliff is a highly distributable database management system.</p>
+            <br />
+            <div>
+              <Tag type="red">Rust</Tag>
+            </div>
+          </ClickableTile>
+        </Column>
+        <Column style="margin: 12px;">
+          <ClickableTile href="https://github.com/deeprobin/bruteforce-rs">
+            <h2>bruteforce-rs</h2>
             <Tag type="teal">Maintained</Tag>
-            <Tag type="gray">External</Tag>
-          </div>
-          <br />
-          <p>
-            The .NET Runtime is a project that is responsible for the execution
-            of code compiled to IL (such as C#).
-          </p>
-          <p>I have listed this here because I regularly contribute.</p>
-          <br />
-          <div>
-            <Tag type="green">C#</Tag>
-            <Tag type="magenta">C++</Tag>
-          </div>
-        </ClickableTile>
-      </Column>
-    </Row>
+            <br />
+            <p>A no-std rust bruteforce string-generation library</p>
+            <br />
+            <div>
+              <Tag type="red">Rust</Tag>
+            </div>
+          </ClickableTile>
+        </Column>
+      </Row>
+      <Row>
+        <Column style="margin: 12px;">
+          <ClickableTile href="https://github.com/deeprobin/uvm">
+            <h2>uvm</h2>
+            <Tag type="purple">Work in progress</Tag>
+            <br />
+            <p>
+              The universal virtual machine is a virtual machine focused on a
+              fast highly decentralized computing using a Just-in-time compiler,
+              which includes GPU-optimization, auto-vectorization, profile
+              guided optimization.
+            </p>
+            <br />
+            <div>
+              <Tag type="red">Rust</Tag>
+            </div>
+          </ClickableTile>
+        </Column>
+        <Column style="margin: 12px;">
+          <ClickableTile href="https://github.com/dotnet/runtime/">
+            <h2>The .NET Runtime</h2>
+            <div>
+              <Tag type="teal">Maintained</Tag>
+              <Tag type="gray">External</Tag>
+            </div>
+            <br />
+            <p>
+              The .NET Runtime is a project that is responsible for the
+              execution of code compiled to IL (such as C#).
+            </p>
+            <p>I have listed this here because I regularly contribute.</p>
+            <br />
+            <div>
+              <Tag type="green">C#</Tag>
+              <Tag type="magenta">C++</Tag>
+            </div>
+          </ClickableTile>
+        </Column>
+      </Row>
+    </div>
   </div>
-</div>
-
 </BasePage>

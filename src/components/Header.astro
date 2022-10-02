@@ -1,0 +1,105 @@
+---
+import {
+  Header,
+  HeaderUtilities,
+  HeaderNavMenu,
+  SkipToContent,
+  HeaderNav,
+  HeaderNavItem,
+  HeaderActionLink,
+} from "carbon-components-svelte";
+import Header from "carbon-components-svelte/src/UIShell/Header.svelte";
+import HeaderUtilities from "carbon-components-svelte/src/UIShell/HeaderUtilities.svelte";
+import HeaderNavMenu from "carbon-components-svelte/src/UIShell/HeaderNavMenu.svelte";
+import SkipToContent from "carbon-components-svelte/src/UIShell/SkipToContent.svelte";
+import HeaderNav from "carbon-components-svelte/src/UIShell/HeaderNav.svelte";
+import HeaderNavItem from "carbon-components-svelte/src/UIShell/HeaderNavItem.svelte";
+import HeaderActionLink from "carbon-components-svelte/src/UIShell/HeaderActionLink.svelte";
+import LogoGithub from "carbon-icons-svelte/lib/LogoGithub.svelte";
+import LogoLinkedin from "carbon-icons-svelte/lib/LogoLinkedin.svelte";
+import LogoTwitter from "carbon-icons-svelte/lib/LogoTwitter.svelte";
+import type { Language } from "../localization/language";
+
+const { language } = Astro.props;
+---
+
+<Header
+  href={"/" + language.identifier}
+  company="Robin Lindner"
+  platformName="deeprobin.de"
+>
+  <slot name="skip-to-content">
+    <SkipToContent />
+  </slot>
+  <HeaderNav>
+    <HeaderNavMenu client:load text={language?.getByKey("projects")}>
+      <HeaderNavItem
+        client:load
+        href={"/" + language.identifier + "/projects/featured"}
+        text={language?.getByKey("projects.featured")}
+      />
+      <HeaderNavItem
+        client:load
+        href={"/" + language.identifier + "/projects/side-projects"}
+        text={language?.getByKey("projects.sideProjects")}
+      />
+    </HeaderNavMenu>
+    <HeaderNavMenu client:load text={language?.getByKey("blog")}>
+      <HeaderNavItem
+        client:load
+        href={"/" + language.identifier + "/blog/announcements"}
+        text={language?.getByKey("blog.announcements.name")}
+      />
+      <HeaderNavItem
+        client:load
+        href={"/" + language.identifier + "/blog/software"}
+        text="Software"
+      />
+      <HeaderNavItem
+        client:load
+        href={"/" + language.identifier + "/blog/finance"}
+        text="Finance"
+      />
+    </HeaderNavMenu>
+    <HeaderNavItem
+      client:load
+      href={"/" + language.identifier + "/shop"}
+      text={language?.getByKey("shop")}
+    />
+    <HeaderNavItem
+      client:load
+      href={"/" + language.identifier + "/contact"}
+      text={language?.getByKey("contact")}
+    />
+  </HeaderNav>
+  <HeaderUtilities>
+    <HeaderNavItem
+      client:load
+      href={"/" + language.identifier + "/legal-details"}
+      text={language?.getByKey("legalDetails")}
+    />
+    <HeaderNavItem
+      client:load
+      href={"/" + language.identifier + "/privacy-policy"}
+      text={language?.getByKey("privacyPolicy")}
+    />
+    <HeaderActionLink
+      client:load
+      aria-label="Github"
+      icon={LogoGithub}
+      href="https://github.com/deeprobin"
+    />
+    <HeaderActionLink
+      client:load
+      aria-label="LinkedIn"
+      icon={LogoLinkedin}
+      href="https://www.linkedin.com/in/deeprobin/"
+    />
+    <HeaderActionLink
+      client:load
+      aria-label="Twitter"
+      icon={LogoTwitter}
+      href="https://twitter.com/_DeepRobin"
+    />
+  </HeaderUtilities>
+</Header>

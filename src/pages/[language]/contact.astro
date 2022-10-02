@@ -1,10 +1,16 @@
 ---
-import ContactForm from '../../components/ContactForm.svelte';
+import ContactForm from "../../components/ContactForm.svelte";
 import BasePage from "../../layouts/BasePage.astro";
-
+let language = await getLanguageRespectingPath(Astro.params);
+if (language == undefined) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
 ---
 
 <BasePage>
-	<h1>Contact</h1>
-    <ContactForm client:load/>
+  <h1>Contact</h1>
+  <ContactForm client:load />
 </BasePage>

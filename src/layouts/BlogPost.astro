@@ -1,35 +1,54 @@
 ---
 import BasePage from "./BasePage.astro";
+import Breadcrumb from "carbon-components-svelte/src/Breadcrumb/Breadcrumb.svelte";
+import BreadcrumbItem from "carbon-components-svelte/src/Breadcrumb/BreadcrumbItem.svelte";
 
 export interface Props {
-	content: {
-		title: string;
-		description: string;
-		pubDate?: string;
-		updatedDate?: string;
-		heroImage?: string;
-	};
+  content: {
+    title: string;
+    description: string;
+    pubDate?: string;
+    updatedDate?: string;
+    heroImage?: string;
+  };
 }
 
+console.log(JSON.stringifiy(Astro.props));
+let language = await getLanguageRespectingPath(Astro.params);
 const {
-	content: { title, description, pubDate, updatedDate, heroImage },
+  content: { title, description, pubDate, updatedDate, heroImage },
 } = Astro.props;
 ---
 
 <BasePage>
-			<article>
-				{heroImage && (
-					<img
-						width={720}
-						height={360}
-						src={heroImage}
-						alt=""
-					/>
-				)}
-				<h1 class="title">{title}</h1>
-				{pubDate && <time>{pubDate}</time>}
-				{updatedDate && <div>Last updated on <time>{updatedDate}</time></div>}
-				<hr/>
-				<slot />
-			</article>
+  <article>
+    {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+
+    <Breadcrumb noTrailingSlash>
+      <BreadcrumbItem href={"/" + language.identifier + "/blog"}
+        >Blog</BreadcrumbItem
+      >
+      <BreadcrumbItem href={"/" + language.identifier + "/blog/announcements"}
+        >Announcements</BreadcrumbItem
+      >
+      <BreadcrumbItem
+        href={"/" +
+          language.identifier +
+          "/blog/announcements/001_initial_post"}
+        isCurrentPage>Initial post</BreadcrumbItem
+      >
+    </Breadcrumb>
+
+    <h1 class="title">{title}</h1>
+    {pubDate && <time>{pubDate}</time>}
+    {
+      updatedDate && (
+        <div>
+          Last updated on <time>{updatedDate}</time>
+        </div>
+      )
+    }
+    <hr />
+    <slot />
+  </article>
 </BasePage>

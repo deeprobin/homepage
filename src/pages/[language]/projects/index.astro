@@ -1,7 +1,15 @@
 ---
 import BasePage from "../../../layouts/BasePage.astro";
+
+let language = await getLanguageRespectingPath(Astro.params);
+if (language == undefined) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
 ---
 
 <BasePage>
-	<!--<ProjectsComponent client:load/>-->
+  <!--<ProjectsComponent client:load/>-->
 </BasePage>

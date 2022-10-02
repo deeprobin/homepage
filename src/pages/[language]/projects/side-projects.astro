@@ -4,62 +4,69 @@ import Row from "carbon-components-svelte/src/Grid/Row.svelte";
 import Column from "carbon-components-svelte/src/Grid/Column.svelte";
 import ClickableTile from "carbon-components-svelte/src/Tile/ClickableTile.svelte";
 import Tag from "carbon-components-svelte/src/Tag/Tag.svelte";
+
+let language = await getLanguageRespectingPath(Astro.params);
+if (language == undefined) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
 ---
 
 <BasePage>
-<div>
-  <h1>Side projects</h1>
-  <br />
-  <div style="margin: auto;">
-    <Row>
-      <Column style="margin: 12px;">
-        <ClickableTile href="https://deeprobin.de">
-          <h2>This website</h2>
-          <Tag type="teal">Maintained</Tag>
-          <br />
-          <p>I don't think I need a description here.</p>
-          <br />
-          <div>
-            <Tag type="red">Svelte</Tag>
-            <Tag type="cyan">TypeScript</Tag>
-          </div>
-        </ClickableTile>
-      </Column>
-      <Column style="margin: 12px;">
-        <ClickableTile href="https://chaosolymp.de">
-          <h2>ChaosOlymp.DE</h2>
-          <Tag type="teal">Maintained</Tag>
-          <br />
-          <p>The website of the Minecraft server ChaosOlymp.</p>
-          <br />
-          <div>
-            <Tag type="teal">Vue</Tag>
-            <Tag type="cyan">TypeScript</Tag>
-          </div>
-        </ClickableTile>
-      </Column>
-    </Row>
-    <Row>
-      <Column style="margin: 12px;">
-        <ClickableTile
-          href="https://github.com/deeprobin/expression-serializer"
-        >
-          <h2>Expression Serializer</h2>
-          <Tag type="purple">Work in progress</Tag>
-          <br />
-          <p>
-            This is a library that can serialize the expressions from
-            System.Linq.Expressions to a binary format and deserialize them
-            again.
-          </p>
-          <br />
-          <div>
-            <Tag type="green">C#</Tag>
-          </div>
-        </ClickableTile>
-      </Column>
-    </Row>
+  <div>
+    <h1>Side projects</h1>
+    <br />
+    <div style="margin: auto;">
+      <Row>
+        <Column style="margin: 12px;">
+          <ClickableTile href="https://deeprobin.de">
+            <h2>This website</h2>
+            <Tag type="teal">Maintained</Tag>
+            <br />
+            <p>I don't think I need a description here.</p>
+            <br />
+            <div>
+              <Tag type="red">Svelte</Tag>
+              <Tag type="cyan">TypeScript</Tag>
+            </div>
+          </ClickableTile>
+        </Column>
+        <Column style="margin: 12px;">
+          <ClickableTile href="https://chaosolymp.de">
+            <h2>ChaosOlymp.DE</h2>
+            <Tag type="teal">Maintained</Tag>
+            <br />
+            <p>The website of the Minecraft server ChaosOlymp.</p>
+            <br />
+            <div>
+              <Tag type="teal">Vue</Tag>
+              <Tag type="cyan">TypeScript</Tag>
+            </div>
+          </ClickableTile>
+        </Column>
+      </Row>
+      <Row>
+        <Column style="margin: 12px;">
+          <ClickableTile
+            href="https://github.com/deeprobin/expression-serializer"
+          >
+            <h2>Expression Serializer</h2>
+            <Tag type="purple">Work in progress</Tag>
+            <br />
+            <p>
+              This is a library that can serialize the expressions from
+              System.Linq.Expressions to a binary format and deserialize them
+              again.
+            </p>
+            <br />
+            <div>
+              <Tag type="green">C#</Tag>
+            </div>
+          </ClickableTile>
+        </Column>
+      </Row>
+    </div>
   </div>
-</div>
-
 </BasePage>
