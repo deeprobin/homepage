@@ -2,6 +2,8 @@
 import BasePage from "./BasePage.astro";
 import Breadcrumb from "carbon-components-svelte/src/Breadcrumb/Breadcrumb.svelte";
 import BreadcrumbItem from "carbon-components-svelte/src/Breadcrumb/BreadcrumbItem.svelte";
+import { getLanguageRespectingPath } from "../localization";
+import { MetaBuilder } from "../meta/meta";
 
 export interface Props {
   content: {
@@ -13,29 +15,118 @@ export interface Props {
   };
 }
 
-console.log(JSON.stringifiy(Astro.props));
 let language = await getLanguageRespectingPath(Astro.params);
 const {
   content: { title, description, pubDate, updatedDate, heroImage },
+  file
 } = Astro.props;
+
+// E:/private/homepage/src/posts/announcements/de
+let lastSlashIdx = file.lastIndexOf("/");
+let parentDir = file.substring(0, lastSlashIdx);
+
+// E:/private/homepage/src/posts/announcements
+let slashBeforeLanguageIdx = parentDir.lastIndexOf("/");
+let a = parentDir.substring(0, slashBeforeLanguageIdx);
+
+// announcements
+let i = a.lastIndexOf("/") + 1;
+let category = a.substring(i);
+
+let post = file.substring(lastSlashIdx + 1, file.lastIndexOf('.'));
+
+//
+
+let metaBuilder = new MetaBuilder();
+metaBuilder.title("DeepRobin.DE – Robin Lindner");
+metaBuilder.description(description);
+metaBuilder.jsonld({
+  "@context": "http://www.schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://deeprobin.de/" + language?.identifier,
+        "name": "DeepRobin.DE"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://deeprobin.de/" + language?.identifier + "/blog",
+        "name": "Blog"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://deeprobin.de/" + language?.identifier + "/blog/" + category,
+        "name": language?.getByKey("blog." + category + ".name")
+      }
+    },
+  ]
+});
+// TODO: Article (TechArticle?)
+// See https://jsonld.com/article/
+metaBuilder.jsonld({
+  "@context": "http://www.schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "image": heroImage,
+  "editor": "Robin Lindner",
+  "genre": ["Announcements"],
+  "keywords": "Robin Lindner",
+  "wordcount": 1000, // TODO,
+  "datePublished": pubDate,
+  "dateCreated": pubDate,
+  "dateModified": updatedDate,
+  "description": description,
+  "articleSection": language?.getByKey("blog." + category + ".name"),
+  "articleBody": "", // Complete body, TODO
+  "inLanguage": language?.identifier,
+  "copyrightHolder": ["Robin Lindner"],
+  "author": {
+    "@type": "Person",
+    "name": "Robin Lindner",
+    "url": "https://deeprobin.de"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Robin Lindner",
+    "url": "https://deeprobin.de"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Robin Lindner",
+    "url": "https://deeprobin.de"
+  },
+  // TODO
+  //"sponsor": {}
+  "mainEntityOfPage": "True",
+});
+
+let meta = metaBuilder.create();
 ---
 
-<BasePage>
-  <article>
+<BasePage meta={meta}>
     {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
 
     <Breadcrumb noTrailingSlash>
-      <BreadcrumbItem href={"/" + language.identifier + "/blog"}
+      <BreadcrumbItem href={"/" + language?.identifier + "/blog"}
         >Blog</BreadcrumbItem
       >
-      <BreadcrumbItem href={"/" + language.identifier + "/blog/announcements"}
-        >Announcements</BreadcrumbItem
+      <BreadcrumbItem href={"/" + language?.identifier + "/blog/" + category}
+        >{language?.getByKey("blog." + category + ".name")}</BreadcrumbItem
       >
       <BreadcrumbItem
         href={"/" +
-          language.identifier +
-          "/blog/announcements/001_initial_post"}
-        isCurrentPage>Initial post</BreadcrumbItem
+          language?.identifier +
+          "/blog/" + category + "/" + post}
+        isCurrentPage>{title}</BreadcrumbItem
       >
     </Breadcrumb>
 
@@ -50,5 +141,4 @@ const {
     }
     <hr />
     <slot />
-  </article>
 </BasePage>

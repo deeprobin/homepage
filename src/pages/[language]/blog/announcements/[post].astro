@@ -4,11 +4,15 @@ import { getLanguageRespectingPath } from "../../../../localization";
 
 let language = await getLanguageRespectingPath(Astro.params);
 if(language == undefined) {
-	Astro.redirect("/");
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
 }
 
 let post: string = Astro.params["post"] as string;
 let posts: AstroInstance[] = await Astro.glob("../../../../posts/announcements/**/*.{md,mdx}");
+
 let matchingPosts = posts.filter(p => {
 	let lastSlashIdx = p.file.lastIndexOf('/');
 	let fileNameWithoutExtension = p.file.substring(lastSlashIdx + 1, p.file.lastIndexOf('.'));
@@ -19,9 +23,12 @@ let matchingPosts = posts.filter(p => {
 
 	return l == language?.identifier && fileNameWithoutExtension?.toLowerCase() == post?.toLowerCase();
 });
-if(matchingPosts.length == 0) {
-	// TODO: 404
-	Astro.redirect("/404");
+
+if (matchingPosts.length == 0) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
 }
 
 let thePost: AstroInstance = matchingPosts[0] as AstroInstance;

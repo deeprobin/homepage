@@ -1,4 +1,5 @@
 ---
+import { getLanguageRespectingPath } from "../../../localization";
 import BasePage from "../../../layouts/BasePage.astro";
 
 let language = await getLanguageRespectingPath(Astro.params);

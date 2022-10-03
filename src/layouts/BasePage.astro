@@ -3,76 +3,29 @@
 import "carbon-components-svelte/css/white.css";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
-import { getLanguageRespectingPath, getLanguages } from "../localization";
+import ContextMenu from "../components/ContextMenu.astro";
+import BaseContent from "../components/BaseContent.astro";
+import { State } from "../state";
+import { MetaBuilder } from "../meta/meta";
 
-import ContextMenu from "carbon-components-svelte/src/ContextMenu/ContextMenu.svelte";
-import ContextMenuOption from "carbon-components-svelte/src/ContextMenu/ContextMenuOption.svelte";
-import ContextMenuGroup from "carbon-components-svelte/src/ContextMenu/ContextMenuGroup.svelte";
-import InlineNotification from "carbon-components-svelte/src/Notification/InlineNotification.svelte";
-
-import Grid from "carbon-components-svelte/src/Grid/Grid.svelte";
-import Row from "carbon-components-svelte/src/Grid/Row.svelte";
-import Column from "carbon-components-svelte/src/Grid/Column.svelte";
-
-import Content from "carbon-components-svelte/src/UIShell/Content.svelte";
-
-import { Language } from "carbon-icons-svelte";
-
-let language = await getLanguageRespectingPath(Astro.params);
-let languages = await getLanguages();
+const { meta } = Astro.props;
+let state = await State.createState(Astro);
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title="DeepRobin.DE" description="DeepRobin.DE" />
+    <BaseHead meta={meta} />
+    <script type="text/partytown">
+      console.log("Test");
+    </script>
   </head>
 
   <body>
-    <ContextMenu client:only>
-      <ContextMenuOption client:only labelText="Test" />
-      <ContextMenuOption
-        indented
-        labelText="Switch language"
-        icon={Language}
-        client:only
-      >
-        <ContextMenuGroup labelText="Language">
-          {
-            languages.map((lang) => (
-              <ContextMenuOption
-                client:only
-                labelText={lang?.getByKey("translatedName")}
-                on:click={() => {
-                  let pathName = Astro.url.pathname;
-                  let langIndex = pathName.indexOf("/");
-                  let languageRemovedPath = pathName.substring(langIndex + 1);
-                  window.location.href = "/" + lang + "/" + languageRemovedPath;
-                }}
-              />
-            ))
-          }
-        </ContextMenuGroup>
-      </ContextMenuOption>
-    </ContextMenu>
+    <ContextMenu {state} />
+    <Header {state} />
 
-    <Header language={language} />
-
-    <Content>
-      <Grid>
-        <Row>
-          <Column>
-            <noscript>
-              <InlineNotification hideCloseButton kind="warning">
-                <strong slot="title">{language?.getByKey("warning")}:</strong>
-                <strong slot="subtitle"
-                  >{language.getByKey("javascriptNotEnabled")}</strong
-                >
-              </InlineNotification>
-            </noscript>
-            <slot />
-          </Column>
-        </Row>
-      </Grid>
-    </Content>
+    <BaseContent {state}>
+      <slot />
+    </BaseContent>
   </body>
 </html>
