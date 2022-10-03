@@ -14,6 +14,7 @@
     "legalDetails": "Impressum",
     "privacyPolicy": "Datenschutz",
     "index.description": "Hey, ich bin leidenschaftlicher Softwareentwickler mit dem Schwerpunkt auf Cloud-fokussierter Backend-Entwicklung. Ich interessiere mich auch für Compilertechnik und x86-Assembly.",
+    "index.meta.description": "Die Internetpräsenz von Robin Lindner — Software Engineering with passion.",
     "blog.announcements.name": "Ankündigungen",
     "blog.announcements.rss.description": "In diesem Feed befinden sich Ankündigungen zu Ereignissen.",
     "warning": "Warnung",

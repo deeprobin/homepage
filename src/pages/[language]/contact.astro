@@ -1,6 +1,8 @@
 ---
+import { getLanguageRespectingPath } from "../../localization";
 import ContactForm from "../../components/ContactForm.svelte";
 import BasePage from "../../layouts/BasePage.astro";
+
 let language = await getLanguageRespectingPath(Astro.params);
 if (language == undefined) {
   return new Response(null, {

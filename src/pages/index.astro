@@ -1,11 +1,5 @@
 ---
-import Row from "carbon-components-svelte/src/Grid/Row.svelte";
-import Column from "carbon-components-svelte/src/Grid/Column.svelte";
-import Grid from "carbon-components-svelte/src/Grid/Grid.svelte";
-import ClickableTile from "carbon-components-svelte/src/Tile/ClickableTile.svelte";
-import { getLanguage, getLanguages } from "../localization";
-import type { Language } from "../localization/language";
-import MinimalPage from "../layouts/MinimalPage.astro";
+import { getLanguage } from "../localization";
 
 let language = await getLanguage(Astro.request);
 if (language == undefined) {

@@ -1,5 +1,5 @@
 ---
-import Header from "./svelte/Header.svelte";
+import BaseContent from "./svelte/BaseContent.svelte";
 const { state } = Astro.props;
 ---
 
@@ -7,4 +7,6 @@ const { state } = Astro.props;
   In this case, it is better to have the component hydrated by Svelte instead of via Astro.
   The obstacle is the poor rendering performance in this case, because otherwise a lot of Svelte islands would have to be created.
 -->
-<Header client:load {state} />
+<BaseContent {state}>
+    <slot />
+</BaseContent>

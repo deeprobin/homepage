@@ -13,9 +13,9 @@ async function getFallbackLanguage(): Promise<Language> {
 }
 
 export async function getLanguage(request: Request): Promise<Language | undefined> {
-    console.log(JSON.stringify(request.headers.get("Accept-Language")));
     if (request.headers.has("Accept-Language")) {
-        for (let language of request.headers.get("Accept-Language")!.split(',')) {
+        let acceptLanguageHeader = request.headers.get("Accept-Language")!;
+        for (let language of acceptLanguageHeader.split(',')) {
             // ' en-US' -> 'en-US'
             // ' en-US;q=0.8' -> 'en-US;q=0.8'
             // ' en;q=0.8' -> 'en;q=0.8'

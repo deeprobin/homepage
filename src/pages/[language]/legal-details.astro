@@ -1,18 +1,20 @@
 ---
+import { getLanguageRespectingPath } from "../../localization";
 import BasePage from "../../layouts/BasePage.astro";
 import InlineNotification from "carbon-components-svelte/src/Notification/InlineNotification.svelte";
+
 let language = await getLanguageRespectingPath(Astro.params);
 let showInvalidLanguageNotification =
-  language == undefined || language.identifier != "de";
+  language !== undefined && language.identifier != "de";
 ---
 
 <BasePage>
   {
     showInvalidLanguageNotification && (
       <InlineNotification hideCloseButton kind="warning">
-        <strong slot="title">{lang.getByKey("warning")}:</strong>
+        <strong slot="title">{language!.getByKey("warning")}:</strong>
         <strong slot="subtitle">
-          {lang.getByKey("pageInThisLanguageNotSupported")}
+          {language!.getByKey("pageInThisLanguageNotSupported")}
         </strong>
       </InlineNotification>
     )
