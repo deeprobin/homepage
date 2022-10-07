@@ -1,23 +1,17 @@
-FROM node:lts as builder
+FROM node:16-alpine as builder
 
 WORKDIR /app
 
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Fetch dependencies
+COPY pnpm-lock.yaml .
+RUN pnpm fetch
+
+# Build
 COPY . .
-
-RUN yarn install \
-    --prefer-offline \
-    --frozen-lockfile \
-    --non-interactive \
-    --production=false
-
-RUN yarn build
-
-RUN rm -rf node_modules && \
-    NODE_ENV=production yarn install \
-    --prefer-offline \
-    --pure-lockfile \
-    --non-interactive \
-    --production=true
+RUN pnpm install --offline && pnpm run build
 
 FROM denoland/deno:alpine
 

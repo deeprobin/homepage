@@ -1,8 +1,15 @@
 ---
 import MinimalPage from "../layouts/MinimalPage.astro";
+import { MetaBuilder } from "../meta/meta";
+
+let metaBuilder = new MetaBuilder();
+metaBuilder.title("DeepRobin.DE – 404");
+metaBuilder.description("Page not found");
+
+let meta = metaBuilder.create();
 ---
 
-<MinimalPage>
-    <h1>Something went wrong</h1>
-    <h2>404 - Page not found</h2>
+<MinimalPage meta={meta}>
+  <h1>Something went wrong</h1>
+  <h2>404 - Page not found</h2>
 </MinimalPage>

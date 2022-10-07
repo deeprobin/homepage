@@ -24,39 +24,39 @@ metaBuilder.description(language.getByKey("index.meta.description")!);
 metaBuilder.jsonld({
   "@context": "http://www.schema.org",
   "@type": "WebPage",
-  "name": "DeepRobin.DE – Robin Lindner",
-  "description": language.getByKey("index.meta.description")!
+  name: "DeepRobin.DE – Robin Lindner",
+  description: language.getByKey("index.meta.description")!,
 });
 metaBuilder.jsonld({
   "@context": "http://www.schema.org",
   "@type": "person",
-  "name": "Robin Lindner",
-  "jobTitle": "Software Engineer",
-  "height": "1.73m",
-  "gender": "male",
-  "url": "https://deeprobin.de/",
-  "sameAs": [
+  name: "Robin Lindner",
+  jobTitle: "Software Engineer",
+  height: "1.73m",
+  gender: "male",
+  url: "https://deeprobin.de/",
+  sameAs: [
     "https://github.com/deeprobin/",
-    "https://www.linkedin.com/in/deeprobin/"
+    "https://www.linkedin.com/in/deeprobin/",
   ],
-  "worksFor": {
+  worksFor: {
     "@type": "Organization",
-    "name": "Würth Industrie Service GmbH & Co. KG",
-    "url": "https://wuerth-industrie.com/",
-    "address": {
+    name: "Würth Industrie Service GmbH & Co. KG",
+    url: "https://wuerth-industrie.com/",
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Bad Mergentheim",
-      "addressRegion": "BW",
-      "postalCode": "97980",
-      "addressCountry": "Germany"
-    }
+      addressLocality: "Bad Mergentheim",
+      addressRegion: "BW",
+      postalCode: "97980",
+      addressCountry: "Germany",
+    },
   },
-  "email": "robin@deeprobin.de",
-  "birthDate": "2004-04-02",
-  "birthPlace": "Bad Mergentheim, Germany",
+  email: "robin@deeprobin.de",
+  birthDate: "2004-04-02",
+  birthPlace: "Bad Mergentheim, Germany",
   //"memberOf": [".NET Foundation"],
   //"award": [""]
-  "nationality": "German",
+  nationality: "German",
 });
 
 let meta = metaBuilder.create();

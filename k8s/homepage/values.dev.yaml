@@ -18,3 +18,5 @@ ingress:
   - hosts:
     - dev.deeprobin.de
     secretName: deeprobin.de-tls
+
+replicaCount: 2

@@ -1,12 +1,10 @@
 ---
-//import "../styles/carbon.scss";
 import "carbon-components-svelte/css/white.css";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import ContextMenu from "../components/ContextMenu.astro";
 import BaseContent from "../components/BaseContent.astro";
 import { State } from "../state";
-import { MetaBuilder } from "../meta/meta";
 
 const { meta } = Astro.props;
 let state = await State.createState(Astro);

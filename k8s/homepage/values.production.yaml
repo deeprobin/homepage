@@ -18,3 +18,8 @@ ingress:
   - hosts:
     - deeprobin.de
     secretName: deeprobin.de-tls
+
+autoscaling:
+  enabled: true
+  minReplicas: 4
+  maxReplicas: 8
