@@ -1,48 +1,65 @@
 ---
-import type { Meta } from '../meta/meta';
+import type { Meta } from "../meta/meta";
 
 export interface Props {
-	meta: Meta
+  meta: Meta;
 }
 
 const { meta }: Props = Astro.props;
 ---
 
-<!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Primary Meta Tags -->
-<title>{meta.title}</title>
-<meta name="title" content={meta.title} />
-<meta name="subject" content={meta.subject} />
-<meta name="description" content={meta.description} />
-<meta name="summary" content={meta.summary} />
-<meta name="copyright" content="Robin Lindner" />
-<meta name="author" content="Robin Lindner" />
-<meta name="url" content={Astro.url} />
-<meta name="identifier-URL" content={Astro.url} />
-<meta name="Classification" content="Business">
-<meta name="coverage" content="Worldwide">
-<meta name="distribution" content="Global">
-<meta name="rating" content="General">
+{
+  meta && (
+    <>
+      <title>{meta.title}</title>
+      <meta name="title" content={meta.title} />
+      <meta name="subject" content={meta.subject} />
+      <meta name="description" content={meta.description} />
+      <meta name="summary" content={meta.summary} />
+      <meta name="copyright" content="Robin Lindner" />
+      <meta name="author" content="Robin Lindner" />
+      <meta name="url" content={Astro.url} />
+      <meta name="identifier-URL" content={Astro.url} />
+      <meta name="Classification" content="Business" />
+      <meta name="coverage" content="Worldwide" />
+      <meta name="distribution" content="Global" />
+      <meta name="rating" content="General" />
 
-{meta.revisedAt && <meta name="revised" content={meta.revisedAt.toString()} />}
+      {meta.revisedAt && (
+        <meta name="revised" content={meta?.revisedAt.toString()} />
+      )}
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={meta.opengraphTitle} />
-<meta property="og:description" content={meta.opengraphDescription} />
-{meta.opengraphImage && <meta property="og:image" content={new URL(meta.opengraphImage, Astro.url)} />}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={Astro.url} />
+      <meta property="og:title" content={meta.opengraphTitle} />
+      <meta property="og:description" content={meta.opengraphDescription} />
+      {meta.opengraphImage && (
+        <meta
+          property="og:image"
+          content={new URL(meta?.opengraphImage, Astro.url)}
+        />
+      )}
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={meta.twitterTitle} />
-<meta property="twitter:description" content={meta.twitterDescription} />
-{meta.twitterImage && <meta property="twitter:image" content={new URL(meta.twitterImage, Astro.url)} />}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content={Astro.url} />
+      <meta property="twitter:title" content={meta.twitterTitle} />
+      <meta property="twitter:description" content={meta.twitterDescription} />
+      {meta.twitterImage && (
+        <meta
+          property="twitter:image"
+          content={new URL(meta?.twitterImage, Astro.url)}
+        />
+      )}
 
-{meta.jsonld && meta.jsonld.map(item => <script type="application/ld+json">{JSON.stringify(item)}</script>)}
+      {meta.jsonld &&
+        meta.jsonld.map((item) => (
+          <script type="application/ld+json" set:html={JSON.stringify(item)} />
+        ))}
+    </>
+  )
+}

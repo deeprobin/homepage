@@ -7,22 +7,49 @@ on:
     branches: [ "main", "staging", "production" ]
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-
+    
     steps:
     - uses: actions/checkout@v3
-    - name: Setup node ${{ matrix.node-version }}
+    - name: Setup node 16
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - name: Setup project
-      run: yarn
+        node-version: 16
+
+    - uses: pnpm/action-setup@v2.0.1
+      name: Install pnpm
+      id: pnpm-install
+      with:
+        version: 7
+        run_install: false
+
+    - name: Get pnpm store directory
+      id: pnpm-cache
+      run: |
+        echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+    - uses: actions/cache@v3
+      name: Setup pnpm cache
+      with:
+        path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: Install dependencies
+      run: pnpm install
+  build:
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
     - name: Build project
-      run: yarn build
+      run: pnpm build
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Run tests
-      run: npm test
+      run: pnpm test

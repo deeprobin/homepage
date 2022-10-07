@@ -1,0 +1,12 @@
+---
+import CodeSnippet from "./svelte/CodeSnippet.svelte";
+
+interface Props {
+    code: string;
+    inline: boolean;
+}
+
+const { code, inline }: Props = Astro.props;
+---
+
+<CodeSnippet code={code} inline={inline} />

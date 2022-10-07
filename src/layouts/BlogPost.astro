@@ -18,7 +18,7 @@ export interface Props {
 let language = await getLanguageRespectingPath(Astro.params);
 const {
   content: { title, description, pubDate, updatedDate, heroImage },
-  file
+  file,
 } = Astro.props;
 
 // E:/private/homepage/src/posts/announcements/de
@@ -33,7 +33,7 @@ let a = parentDir.substring(0, slashBeforeLanguageIdx);
 let i = a.lastIndexOf("/") + 1;
 let category = a.substring(i);
 
-let post = file.substring(lastSlashIdx + 1, file.lastIndexOf('.'));
+let post = file.substring(lastSlashIdx + 1, file.lastIndexOf("."));
 
 //
 
@@ -43,102 +43,101 @@ metaBuilder.description(description);
 metaBuilder.jsonld({
   "@context": "http://www.schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
+  itemListElement: [
     {
       "@type": "ListItem",
-      "position": 1,
-      "item": {
+      position: 1,
+      item: {
         "@id": "https://deeprobin.de/" + language?.identifier,
-        "name": "DeepRobin.DE"
-      }
+        name: "DeepRobin.DE",
+      },
     },
     {
       "@type": "ListItem",
-      "position": 2,
-      "item": {
+      position: 2,
+      item: {
         "@id": "https://deeprobin.de/" + language?.identifier + "/blog",
-        "name": "Blog"
-      }
+        name: "Blog",
+      },
     },
     {
       "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@id": "https://deeprobin.de/" + language?.identifier + "/blog/" + category,
-        "name": language?.getByKey("blog." + category + ".name")
-      }
+      position: 2,
+      item: {
+        "@id":
+          "https://deeprobin.de/" + language?.identifier + "/blog/" + category,
+        name: language?.getByKey("blog." + category + ".name"),
+      },
     },
-  ]
+  ],
 });
 // TODO: Article (TechArticle?)
 // See https://jsonld.com/article/
 metaBuilder.jsonld({
   "@context": "http://www.schema.org",
   "@type": "BlogPosting",
-  "headline": title,
-  "image": heroImage,
-  "editor": "Robin Lindner",
-  "genre": ["Announcements"],
-  "keywords": "Robin Lindner",
-  "wordcount": 1000, // TODO,
-  "datePublished": pubDate,
-  "dateCreated": pubDate,
-  "dateModified": updatedDate,
-  "description": description,
-  "articleSection": language?.getByKey("blog." + category + ".name"),
-  "articleBody": "", // Complete body, TODO
-  "inLanguage": language?.identifier,
-  "copyrightHolder": ["Robin Lindner"],
-  "author": {
+  headline: title,
+  image: heroImage,
+  editor: "Robin Lindner",
+  genre: ["Announcements"],
+  keywords: "Robin Lindner",
+  wordcount: 1000, // TODO,
+  datePublished: pubDate,
+  dateCreated: pubDate,
+  dateModified: updatedDate,
+  description: description,
+  articleSection: language?.getByKey("blog." + category + ".name"),
+  articleBody: "", // Complete body, TODO
+  inLanguage: language?.identifier,
+  copyrightHolder: ["Robin Lindner"],
+  author: {
     "@type": "Person",
-    "name": "Robin Lindner",
-    "url": "https://deeprobin.de"
+    name: "Robin Lindner",
+    url: "https://deeprobin.de",
   },
-  "creator": {
+  creator: {
     "@type": "Person",
-    "name": "Robin Lindner",
-    "url": "https://deeprobin.de"
+    name: "Robin Lindner",
+    url: "https://deeprobin.de",
   },
-  "publisher": {
+  publisher: {
     "@type": "Person",
-    "name": "Robin Lindner",
-    "url": "https://deeprobin.de"
+    name: "Robin Lindner",
+    url: "https://deeprobin.de",
   },
   // TODO
   //"sponsor": {}
-  "mainEntityOfPage": "True",
+  mainEntityOfPage: "True",
 });
 
 let meta = metaBuilder.create();
 ---
 
 <BasePage meta={meta}>
-    {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+  {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
 
-    <Breadcrumb noTrailingSlash>
-      <BreadcrumbItem href={"/" + language?.identifier + "/blog"}
-        >Blog</BreadcrumbItem
-      >
-      <BreadcrumbItem href={"/" + language?.identifier + "/blog/" + category}
-        >{language?.getByKey("blog." + category + ".name")}</BreadcrumbItem
-      >
-      <BreadcrumbItem
-        href={"/" +
-          language?.identifier +
-          "/blog/" + category + "/" + post}
-        isCurrentPage>{title}</BreadcrumbItem
-      >
-    </Breadcrumb>
+  <Breadcrumb noTrailingSlash>
+    <BreadcrumbItem href={"/" + language?.identifier + "/blog"}
+      >Blog</BreadcrumbItem
+    >
+    <BreadcrumbItem href={"/" + language?.identifier + "/blog/" + category}
+      >{language?.getByKey("blog." + category + ".name")}</BreadcrumbItem
+    >
+    <BreadcrumbItem
+      href={"/" + language?.identifier + "/blog/" + category + "/" + post}
+      isCurrentPage>{title}</BreadcrumbItem
+    >
+  </Breadcrumb>
 
-    <h1 class="title">{title}</h1>
-    {pubDate && <time>{pubDate}</time>}
-    {
-      updatedDate && (
-        <div>
-          Last updated on <time>{updatedDate}</time>
-        </div>
-      )
-    }
-    <hr />
-    <slot />
+  <h1 class="title">{title}</h1>
+  {pubDate && <time>{pubDate}</time>}
+  {
+    updatedDate && (
+      <div>
+        Last updated on <time>{updatedDate}</time>
+      </div>
+    )
+  }
+  <hr />
+  <slot />
 </BasePage>

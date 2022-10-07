@@ -1,9 +1,11 @@
 ---
 import type { AstroInstance } from "astro";
+import CodeSnippet from "../../../../components/CodeSnippet.astro";
+import { Link } from "carbon-components-svelte";
 import { getLanguageRespectingPath } from "../../../../localization";
 
 let language = await getLanguageRespectingPath(Astro.params);
-if(language == undefined) {
+if (language == undefined) {
   return new Response(null, {
     status: 404,
     statusText: "Not found",
@@ -11,17 +13,25 @@ if(language == undefined) {
 }
 
 let post: string = Astro.params["post"] as string;
-let posts: AstroInstance[] = await Astro.glob("../../../../posts/announcements/**/*.{md,mdx}");
+let posts: AstroInstance[] = await Astro.glob(
+  "../../../../posts/announcements/**/*.{md,mdx}"
+);
 
-let matchingPosts = posts.filter(p => {
-	let lastSlashIdx = p.file.lastIndexOf('/');
-	let fileNameWithoutExtension = p.file.substring(lastSlashIdx + 1, p.file.lastIndexOf('.'));
-	let parentDir = p.file.substring(0, lastSlashIdx);
+let matchingPosts = posts.filter((p) => {
+  let lastSlashIdx = p.file.lastIndexOf("/");
+  let fileNameWithoutExtension = p.file.substring(
+    lastSlashIdx + 1,
+    p.file.lastIndexOf(".")
+  );
+  let parentDir = p.file.substring(0, lastSlashIdx);
 
-	let slashBeforeLanguageIdx = parentDir.lastIndexOf('/');
-	let l = parentDir.substring(slashBeforeLanguageIdx + 1);
+  let slashBeforeLanguageIdx = parentDir.lastIndexOf("/");
+  let l = parentDir.substring(slashBeforeLanguageIdx + 1);
 
-	return l == language?.identifier && fileNameWithoutExtension?.toLowerCase() == post?.toLowerCase();
+  return (
+    l == language?.identifier &&
+    fileNameWithoutExtension?.toLowerCase() == post?.toLowerCase()
+  );
 });
 
 if (matchingPosts.length == 0) {
@@ -32,8 +42,9 @@ if (matchingPosts.length == 0) {
 }
 
 let thePost: AstroInstance = matchingPosts[0] as AstroInstance;
+console.log(JSON.stringify(thePost));
 const Content = thePost.default;
+console.log(JSON.stringify(Content));
+---
 
---- 
-
-<Content />
+<Content components={{ a: Link, code: CodeSnippet }} />
