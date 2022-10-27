@@ -1,0 +1,10 @@
+---
+import { getLanguage } from "../localization";
+
+let language = await getLanguage(Astro.request);
+if (language == undefined) {
+  return Astro.redirect("/language");
+} else {
+  return Astro.redirect("/" + language.identifier);
+}
+---
