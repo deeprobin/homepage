@@ -10,14 +10,26 @@
     Button,
     ProgressIndicator,
     ProgressStep,
+    FluidForm,
+    TextInput,
+    ButtonSet,
   } from "carbon-components-svelte";
+  import {
+    Book,
+    DataClass,
+    Person,
+    Promote,
+    TextAlignJustify,
+    Wallet,
+  } from "carbon-icons-svelte";
 
   let currentIndex = 1;
+
+  let selectedLegalEntity = "individual";
 </script>
 
 <Form on:submit>
   <ProgressIndicator bind:currentIndex>
-    <!-- Name, Unternehmen / Auswahl "Privatperson", Job Title/Berufsbezeichnung (nur wenn Unternehmen ausgewählt), Kontaktoptionen (Email, Telefon, Matrix) -->
     <ProgressStep
       complete
       label="persönliche Informationen"
@@ -55,6 +67,61 @@
       description="The progress indicator will listen for clicks on the steps"
     />
   </ProgressIndicator>
+
+  {#if currentIndex === 0}
+    <FormGroup legendText="persönliche Informationen">
+      <FluidForm>
+        <TextInput
+          labelText="Name"
+          placeholder="Wie darf ich Sie ansprechen?"
+          required
+        />
+      </FluidForm>
+      <RadioButtonGroup
+        legendText="Sie sind ..."
+        bind:selected={selectedLegalEntity}
+      >
+        <RadioButton labelText="Privatperson" value="individual" />
+        <RadioButton labelText="Unternehmen" value="company" />
+      </RadioButtonGroup>
+    </FormGroup>
+    {#if selectedLegalEntity == "company"}
+      <FormGroup legendText="Unternehmen">
+        <FluidForm>
+          <TextInput
+            labelText="Unternehmen"
+            placeholder="In welchem Unternehmen sind Sie tätig?"
+          />
+          <TextInput labelText="Position" placeholder="In welcher Position?" />
+        </FluidForm>
+      </FormGroup>
+    {/if}
+    <FormGroup legendText="Kontakt">
+      <FluidForm>
+        <TextInput
+          labelText="Mail"
+          placeholder="Unter welcher Mail-Adresse darf ich Ihnen antworten?"
+        />
+        <TextInput
+          labelText="Matrix"
+          placeholder="Alternativ kann ich Sie über Matrix kontaktieren"
+        />
+        <TextInput
+          labelText="Telefon"
+          placeholder="Oder Old-School, telefonisch!"
+        />
+      </FluidForm>
+    </FormGroup>
+  {:else if currentIndex === 1}
+    <ButtonSet stacked>
+      <Button icon={Wallet}>Auftragsanfrage</Button>
+      <Button icon={DataClass}>Bug / Feature Request</Button>
+      <Button icon={Promote}>Werbepartnerschaft</Button>
+      <Button icon={Book}>rechtliche Belange</Button>
+      <Button icon={Person}>Recruiting</Button>
+      <Button icon={TextAlignJustify}>Anderes</Button>
+    </ButtonSet>
+  {/if}
   <!--
   <FormGroup legendText="Checkboxes">
     <Checkbox id="checkbox-0" labelText="Checkbox Label" checked />

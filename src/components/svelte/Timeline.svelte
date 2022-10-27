@@ -1,19 +1,35 @@
 <div class="timeline">
-  <div class="container left">
-    <div class="content">
-      <h2>2017</h2>
-      <p>Lorem ipsum..</p>
-    </div>
-  </div>
   <div class="container right">
     <div class="content">
-      <h2>2016</h2>
-      <p>Lorem ipsum..</p>
+      <h2>2022 - jetzt</h2>
+      <p>Software-Entwickler</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>2020 - 2022</h2>
+      <p>Ausbildung zum Fachinformatiker (Anwendungsentwicklung)</p>
+    </div>
+  </div>
+  <div class="unimportant container right">
+    <div class="content">
+      <h2>2020</h2>
+      <p>Realschulabschluss</p>
     </div>
   </div>
 </div>
 
 <style lang="scss">
+  .unimportant > .content {
+    & > h2 {
+      font-size: 1.5rem;
+    }
+
+    & > p {
+      font-size: 0.8rem;
+    }
+  }
+
   /* The actual timeline (the vertical ruler) */
   .timeline {
     position: relative;
@@ -26,7 +42,7 @@
     content: "";
     position: absolute;
     width: 6px;
-    background-color: red;
+    background-color: black;
     top: 0;
     bottom: 0;
     left: 50%;
@@ -49,7 +65,7 @@
     height: 25px;
     right: -17px;
     background-color: white;
-    border: 4px solid #ff9f55;
+    border: 4px solid gray;
     top: 15px;
     border-radius: 50%;
     z-index: 1;

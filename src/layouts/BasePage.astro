@@ -5,25 +5,39 @@ import Header from "../components/Header.astro";
 import ContextMenu from "../components/ContextMenu.astro";
 import BaseContent from "../components/BaseContent.astro";
 import { State } from "../state";
+import Row from "carbon-components-svelte/src/Grid/Row.svelte";
+import Column from "carbon-components-svelte/src/Grid/Column.svelte";
 
 const { meta } = Astro.props;
 let state = await State.createState(Astro);
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead meta={meta} />
-    <script type="text/partytown">
-      console.log("Test");
-    </script>
-  </head>
+<style>
+  .content {
+    margin-top: 3rem;
+  }
+  .column-sizing {
+    min-height: 100vh;
+  }
+</style>
 
-  <body>
-    <ContextMenu {state} />
-    <Header {state} />
+<BaseHead meta={meta} />
+<script type="text/partytown">
+  console.log("Test");
+</script>
 
-    <BaseContent {state}>
-      <slot />
-    </BaseContent>
-  </body>
-</html>
+<body>
+  <ContextMenu {state} />
+  <Header {state} />
+
+  <Row class="content">
+    <Column class="column-sizing">
+      <BaseContent {state}>
+        <slot />
+      </BaseContent>
+    </Column>
+    <Column class="column-sizing">
+      <slot name="other-content" />
+    </Column>
+  </Row>
+</body>

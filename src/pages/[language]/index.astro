@@ -2,7 +2,7 @@
 import { getLanguageRespectingPath } from "../../localization";
 
 import BasePage from "../../layouts/BasePage.astro";
-import Avatar from "../../components/Avatar.svelte";
+import Avatar from "../../components/Avatar.astro";
 import Row from "carbon-components-svelte/src/Grid/Row.svelte";
 import Column from "carbon-components-svelte/src/Grid/Column.svelte";
 import ButtonSet from "carbon-components-svelte/src/Button/ButtonSet.svelte";
@@ -71,13 +71,17 @@ let meta = metaBuilder.create();
       <p>{language.getByKey("index.description")}</p>
       <br />
       <ButtonSet>
-        <Button href="./services/">{language.getByKey("services")}</Button>
-        <Button href="./contact/">{language.getByKey("customOffer")}</Button>
-        <Button href="./cv/">{language.getByKey("curriculumVitae")}</Button>
+        <Button href={"/" + language.identifier + "/services"}
+          >{language.getByKey("services")}</Button
+        >
+        <Button href={"/" + language.identifier + "/contact"}
+          >{language.getByKey("customOffer")}</Button
+        >
+        <Button href={"/" + language.identifier + "/cv"}
+          >{language.getByKey("curriculumVitae")}</Button
+        >
       </ButtonSet>
     </Column>
-    <Column>
-      <Avatar client:only />
-    </Column>
   </Row>
+  <Avatar slot="other-content" />
 </BasePage>
