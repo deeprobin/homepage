@@ -1,50 +1,54 @@
 lockfileVersion: 5.4
 
-specifiers:
-  '@astrojs/deno': ^1.0.1
-  '@astrojs/mdx': ^0.11.4
-  '@astrojs/node': ^1.0.1
-  '@astrojs/partytown': ^1.0.0
-  '@astrojs/prefetch': ^0.0.7
-  '@astrojs/rss': ^1.0.1
-  '@astrojs/sitemap': ^1.0.0
-  '@astrojs/svelte': ^1.0.1
-  astro: ^1.1.5
-  autoprefixer: ^10.4.12
-  carbon-components-svelte: ^0.70.5
-  carbon-icons-svelte: ^11.2.0
-  cssnano: ^5.1.13
-  cssnano-preset-advanced: ^5.3.8
-  postcss: ^8.4.17
-  postcss-cli: ^10.0.0
-  prettier: ^2.7.1
-  prettier-plugin-astro: ^0.5.5
-  sass: ^1.55.0
-  svelte: ^3.50.0
+importers:
 
-dependencies:
-  '@astrojs/deno': 1.1.0
-  '@astrojs/node': 1.1.0
-  '@astrojs/partytown': 1.0.1
-  '@astrojs/prefetch': 0.0.7
-  '@astrojs/rss': 1.0.2
-  '@astrojs/sitemap': 1.0.0
-  astro: 1.4.6_sass@1.55.0
-  sass: 1.55.0
+  .:
+    specifiers: {}
 
-devDependencies:
-  '@astrojs/mdx': 0.11.4_rollup@2.79.1
-  '@astrojs/svelte': 1.0.1_j563hvuzj5crl2gdrzor3xc2ye
-  autoprefixer: 10.4.12_postcss@8.4.17
-  carbon-components-svelte: 0.70.10
-  carbon-icons-svelte: 11.3.0
-  cssnano: 5.1.13_postcss@8.4.17
-  cssnano-preset-advanced: 5.3.8_postcss@8.4.17
-  postcss: 8.4.17
-  postcss-cli: 10.0.0_postcss@8.4.17
-  prettier: 2.7.1
-  prettier-plugin-astro: 0.5.5
-  svelte: 3.50.1
+  packages/homepage:
+    specifiers:
+      '@astrojs/deno': ^1.0.1
+      '@astrojs/mdx': ^0.11.4
+      '@astrojs/node': ^1.0.1
+      '@astrojs/partytown': ^1.0.0
+      '@astrojs/prefetch': ^0.0.7
+      '@astrojs/rss': ^1.0.1
+      '@astrojs/sitemap': ^1.0.0
+      '@astrojs/svelte': ^1.0.1
+      astro: ^1.1.5
+      autoprefixer: ^10.4.12
+      carbon-components-svelte: ^0.70.5
+      carbon-icons-svelte: ^11.2.0
+      cssnano: ^5.1.13
+      cssnano-preset-advanced: ^5.3.8
+      postcss: ^8.4.17
+      postcss-cli: ^10.0.0
+      prettier: ^2.7.1
+      prettier-plugin-astro: ^0.5.5
+      sass: ^1.55.0
+      svelte: ^3.50.0
+    dependencies:
+      '@astrojs/deno': 1.1.0
+      '@astrojs/node': 1.1.0
+      '@astrojs/partytown': 1.0.1
+      '@astrojs/prefetch': 0.0.7
+      '@astrojs/rss': 1.0.2
+      '@astrojs/sitemap': 1.0.0
+      astro: 1.4.6_sass@1.55.0
+      sass: 1.55.0
+    devDependencies:
+      '@astrojs/mdx': 0.11.4_rollup@2.79.1
+      '@astrojs/svelte': 1.0.1_j563hvuzj5crl2gdrzor3xc2ye
+      autoprefixer: 10.4.12_postcss@8.4.17
+      carbon-components-svelte: 0.70.10
+      carbon-icons-svelte: 11.3.0
+      cssnano: 5.1.13_postcss@8.4.17
+      cssnano-preset-advanced: 5.3.8_postcss@8.4.17
+      postcss: 8.4.17
+      postcss-cli: 10.0.0_postcss@8.4.17
+      prettier: 2.7.1
+      prettier-plugin-astro: 0.5.5
+      svelte: 3.50.1
 
 packages:
 
@@ -747,7 +751,6 @@ packages:
 
   /@types/node/18.8.3:
     resolution: {integrity: sha512-0os9vz6BpGwxGe9LOhgP/ncvYN5Tx1fNcd2TM3rD/aCGBkysb+ZWpXEocG24h6ZzOi13+VB8HndAQFezsSOw1w==}
-    dev: true
 
   /@types/parse5/6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
@@ -769,7 +772,7 @@ packages:
   /@types/sax/1.2.4:
     resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 18.8.3
     dev: false
 
   /@types/unist/2.0.6:
