@@ -24,7 +24,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
-        context: ./packages/homepage
+        context: ./apps/homepage
         push: true
         tags: |
             ghcr.io/${{ github.repository_owner }}/homepage:dev-${{ steps.date.outputs.date }}
