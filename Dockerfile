@@ -2,6 +2,9 @@ FROM node:16-alpine as builder
 
 WORKDIR /app
 
+# Install libc6 compat
+RUN apk add --no-cache libc6-compat
+
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
@@ -22,4 +25,4 @@ COPY --from=builder /app  .
 ENV HOST 0.0.0.0
 EXPOSE 8085
 
-CMD [ "run", "--allow-net", "--allow-read", "--allow-env", "./dist/server/entry.mjs" ]
+CMD [ "run", "--allow-net", "--allow-read", "--allow-env", "./apps/homepage/dist/server/entry.mjs" ]
