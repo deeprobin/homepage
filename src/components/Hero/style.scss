@@ -1,0 +1,43 @@
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  width: 100%;
+  height: 100%;
+
+  .content {
+    font-size: 16pt;
+    h1 {
+      font-size: 52pt;
+    }
+  }
+
+  .avatar {
+    display: block;
+    max-height: 80vh;
+    border-bottom-left-radius: 300px;
+    border-bottom-right-radius: 300px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    gap: 2rem;
+
+    .content {
+      font-size: 16pt;
+      h1 {
+        font-size: 32pt;
+      }
+    }
+
+    .avatar {
+      max-height: 25vh;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

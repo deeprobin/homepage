@@ -1,0 +1,14 @@
+.skill-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .skill-grid {
+    display: flex;
+    flex-direction: column;
+  }
+}

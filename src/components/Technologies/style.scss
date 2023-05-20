@@ -1,0 +1,15 @@
+.technologies {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  gap: 6rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .technologies {
+    display: block;
+  }
+  .technology {
+    margin-top: 1rem;
+  }
+}

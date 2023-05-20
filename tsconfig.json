@@ -1,3 +1,11 @@
 {
-  "extends": "astro/tsconfigs/strictest"
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@astrojs/prefetch/@types"
+    ]
+  }
 }

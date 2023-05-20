@@ -1,0 +1,91 @@
+.block {
+  width: 100%;
+  padding: 2rem;
+  border-radius: 4px;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.block-contents {
+  width: 50%;
+  font-size: 16pt;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.block-image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+
+  img {
+    border-radius: 3px;
+  }
+}
+
+.block-comment {
+  font-family: "Open Sans";
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.block-title {
+  font-family: "Sarabun";
+  font-size: 32pt;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.block-button {
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  margin-top: 2.5rem;
+
+  &:link {
+    text-decoration: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .block {
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+  }
+
+  .block-image-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .block-contents {
+    width: auto;
+    font-size: 14pt;
+  }
+
+  .block-title {
+    font-family: "Sarabun";
+    font-size: 28pt;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

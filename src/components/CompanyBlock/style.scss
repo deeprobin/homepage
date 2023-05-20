@@ -1,0 +1,15 @@
+.company-block {
+  background-color: #f2f9fd;
+
+  .block-comment {
+    color: #2281b0;
+  }
+
+  .block-button {
+    color: #2281b0;
+
+    &:hover {
+      color: rgb(61, 164, 216);
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.vita-block {
+  background-color: #f4fafa;
+
+  .block-comment {
+    color: #56b4b8;
+  }
+
+  .block-button {
+    color: #56b4b8;
+
+    &:hover {
+      color: #72d7db;
+    }
+  }
+}
