@@ -1,0 +1,19 @@
+---
+import BasePage from "../../../layouts/BasePage.astro";
+import ClickableTile from "carbon-components-svelte/src/Tile/ClickableTile.svelte";
+import { getLanguageRespectingPath } from "../../../localization";
+
+let language = await getLanguageRespectingPath(Astro.params);
+if (language == undefined) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
+---
+
+<BasePage>
+  <ClickableTile href="./blog/announcements">Announcements</ClickableTile>
+  <ClickableTile href="./blog/finance">Finance</ClickableTile>
+  <ClickableTile href="./blog/software">Software</ClickableTile>
+</BasePage>

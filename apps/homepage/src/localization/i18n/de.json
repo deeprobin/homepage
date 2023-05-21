@@ -1,0 +1,23 @@
+{
+    "englishName": "German",
+    "translatedName": "Deutsch",
+    "pleaseSelectYourLanguage": "Bitte wählen Sie Ihre Sprache.",
+    "services": "Dienstleistungen",
+    "customOffer": "Auftragsanfrage",
+    "curriculumVitae": "Lebenslauf",
+    "projects": "Projekte",
+    "projects.featured": "Vorgestellt",
+    "projects.sideProjects": "Nebenprojekte",
+    "blog": "Blog",
+    "shop": "Shop",
+    "contact": "Kontakt",
+    "legalDetails": "Impressum",
+    "privacyPolicy": "Datenschutz",
+    "index.description": "Hey, ich bin leidenschaftlicher Softwareentwickler mit dem Schwerpunkt auf Cloud-fokussierter Backend-Entwicklung. Ich interessiere mich auch für Compilertechnik und x86-Assembly.",
+    "index.meta.description": "Die Internetpräsenz von Robin Lindner — Software Engineering with passion.",
+    "blog.announcements.name": "Ankündigungen",
+    "blog.announcements.rss.description": "In diesem Feed befinden sich Ankündigungen zu Ereignissen.",
+    "warning": "Warnung",
+    "javascriptNotEnabled": "JavaScript ist nicht aktiviert. Die Funktionen dieser Internetseite sind eingeschränkt.",
+    "pageInThisLanguageNotSupported": "Diese Seite wird in Ihrer Sprache nicht unterstützt."
+}

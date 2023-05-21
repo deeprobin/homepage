@@ -1,0 +1,22 @@
+image:
+  repository: ghcr.io/deeprobin/homepage
+  pullPolicy: Always
+  tag: "dev"
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: 
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: "traefik"
+  hosts:
+    - host: dev.deeprobin.de
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: 
+  - hosts:
+    - dev.deeprobin.de
+    secretName: deeprobin.de-tls
+
+replicaCount: 2

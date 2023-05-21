@@ -1,0 +1,15 @@
+name: ci (docker)
+
+on:
+  push:
+    branches: [ "main", "staging", "production" ]
+  pull_request:
+    branches: [ "main", "staging", "production" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --tag homepage:$(date +%s)

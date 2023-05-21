@@ -1,0 +1,2 @@
+interface AnalyticData { }
+interface EventData { }

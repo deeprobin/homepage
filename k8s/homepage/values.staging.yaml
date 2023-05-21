@@ -1,0 +1,25 @@
+image:
+  repository: ghcr.io/deeprobin/homepage
+  pullPolicy: Always
+  tag: "staging"
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: 
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: "traefik"
+  hosts:
+    - host: staging.deeprobin.de
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: 
+  - hosts:
+    - staging.deeprobin.de
+    secretName: deeprobin.de-tls
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 3

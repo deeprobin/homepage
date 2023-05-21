@@ -1,0 +1,36 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import "carbon-components-svelte/css/white.css";
+
+const { meta } = Astro.props;
+---
+
+<style lang="scss">
+  body {
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    & > main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      box-shadow: 8px 8px 16px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      width: 70%;
+      height: 70%;
+    }
+  }
+</style>
+
+<BaseHead meta={meta} />
+
+<body>
+  <main>
+    <slot />
+  </main>
+</body>

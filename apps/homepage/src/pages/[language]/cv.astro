@@ -1,0 +1,25 @@
+---
+import { getLanguageRespectingPath } from "../../localization";
+
+import BasePage from "../../layouts/BasePage.astro";
+import Timeline from "../../components/svelte/Timeline.svelte";
+import { MetaBuilder } from "../../meta/meta";
+
+let language = await getLanguageRespectingPath(Astro.params);
+if (language == undefined) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
+
+let metaBuilder = new MetaBuilder();
+metaBuilder.title("DeepRobin.DE – Curriculum Vitae");
+metaBuilder.description(language.getByKey("index.meta.description")!);
+
+let meta = metaBuilder.create();
+---
+
+<BasePage meta={meta}>
+  <Timeline />
+</BasePage>
