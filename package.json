@@ -11,7 +11,7 @@
     "ci": "npm install -g astro"
   },
   "dependencies": {
-    "@astrojs/image": "^0.16.9",
+    "@astrojs/image": "^0.17.2",
     "@astrojs/partytown": "^1.2.2",
     "@astrojs/prefetch": "^0.2.3",
     "@astrojs/sitemap": "^1.3.1",
