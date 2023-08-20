@@ -19,7 +19,7 @@
     "@fontsource/open-sans": "^4.5.14",
     "@fontsource/sarabun": "^4.5.9",
     "@kobalte/core": "^0.9.6",
-    "@nanostores/persistent": "^0.7.0",
+    "@nanostores/persistent": "^0.9.1",
     "@nanostores/solid": "^0.3.2",
     "astro": "^2.5.1",
     "astro-compress": "^1.1.44",
